@@ -1,0 +1,30 @@
+Template for requesting SEO analysis of a product page:
+
+---
+
+Please analyze the following product page for SEO optimization:
+
+**Product URL:** [Insert product URL]
+
+**Product Name:** [Insert product name]
+
+**Target Keywords:** [List primary keywords you want to rank for]
+
+**Target Audience:** [Describe your ideal customer]
+
+**Competitors:** [List 2-3 competitor URLs]
+
+**Current Performance:**
+- Monthly visitors: [number]
+- Current search ranking: [position for main keyword]
+- Conversion rate: [percentage]
+
+**Specific Concerns:**
+[Describe any specific issues or areas you'd like the analysis to focus on]
+
+**Goals:**
+[What are you hoping to achieve with this optimization?]
+
+---
+
+The AI will analyze your product page and provide detailed recommendations for improving search rankings and visibility.

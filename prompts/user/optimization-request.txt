@@ -1,0 +1,45 @@
+Template for requesting content optimization:
+
+---
+
+Please optimize the content for the following product:
+
+**Product Information:**
+- Product Name: [Insert name]
+- Category: [Insert category]
+- Price Range: [Insert price]
+- Target Market: [Geographic/demographic]
+
+**Current Description:**
+[Paste your current product description here]
+
+**Key Features:**
+1. [Feature 1]
+2. [Feature 2]
+3. [Feature 3]
+4. [Add more as needed]
+
+**Target Keywords:**
+- Primary: [main keyword]
+- Secondary: [supporting keywords]
+- Long-tail: [specific phrases]
+
+**Brand Voice:**
+[Describe your brand personality - e.g., professional, friendly, luxury, eco-conscious]
+
+**Unique Selling Points:**
+[What makes this product different from competitors?]
+
+**Customer Pain Points:**
+[What problems does this product solve?]
+
+**Desired Length:**
+- Short description: [word count]
+- Full description: [word count]
+
+**Special Requirements:**
+[Any specific elements to include or avoid]
+
+---
+
+The AI will generate SEO-optimized, conversion-focused content tailored to your specifications.

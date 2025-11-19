@@ -1,0 +1,21 @@
+# This file stores configuration for the Shopify CLI and app
+
+name = "pagerankai"
+client_id = "YOUR_CLIENT_ID"
+application_url = "https://your-app-url.com"
+embedded = true
+
+[access_scopes]
+scopes = "read_products,write_products,read_content,write_content"
+
+[auth]
+redirect_urls = [
+  "https://your-app-url.com/auth/callback",
+  "http://localhost:3000/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+[pos]
+embedded = false
