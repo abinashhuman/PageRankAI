@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "id": "6b3fc16e-bebf-4c42-815c-1827383af0b1",
+      "url": "https://bravafabrics.com/collections/long-sleeve-shirts-man/products/corduroy-overshirt-chocolate?variant=48934103187788",
+      "analyzedAt": "2025-12-21T03:36:24.379Z",
+      "overallScore": 85,
+      "seoScore": 84,
+      "geoScore": 687
+    },
+    {
+      "id": "33cf98be-c380-4be1-97b2-078f97ff4a56",
+      "url": "https://httpbin.org/html",
+      "analyzedAt": "2025-12-21T03:31:28.256Z",
+      "overallScore": 56,
+      "seoScore": 61,
+      "geoScore": 410
+    }
+  ]
+}

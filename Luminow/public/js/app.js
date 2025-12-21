@@ -1,6 +1,9 @@
 /**
  * Luminow - SEO & GEO Analysis Tool
  * Frontend Application
+ *
+ * SEO Score: 0-100 (traditional scale)
+ * GEO Score: 0-800 (credit score style with bands)
  */
 
 class LuminowApp {
@@ -105,18 +108,23 @@ class LuminowApp {
 
     // Animate scores
     setTimeout(() => {
+      // Overall score (0-100)
       this.animateScore('overall', results.overallScore.score, results.overallScore.grade);
+
+      // SEO score (0-100)
       this.animateScore('seo', results.seo.score);
-      this.animateScore('geo', results.geo.score);
+
+      // GEO score (0-800) - special handling
+      this.animateGeoScore(results.geo);
     }, 100);
 
     // Display issues
     this.displayIssues('seoIssues', results.seo.issues);
     this.displayIssues('geoIssues', results.geo.issues);
 
-    // Display checks
-    this.displayChecks('seoChecks', results.seo.checks, 'SEO');
-    this.displayChecks('geoChecks', results.geo.checks, 'GEO');
+    // Display checks/categories
+    this.displaySEOCategories('seoChecks', results.seo.categories);
+    this.displayGEOPillars('geoChecks', results.geo.pillars);
 
     // Display recommendations
     this.displayRecommendations(results);
@@ -139,7 +147,7 @@ class LuminowApp {
       current = Math.min(current + step, score);
       numberEl.textContent = Math.round(current);
 
-      // Update progress ring
+      // Update progress ring (for 0-100 scores)
       const circumference = 339.292;
       const offset = circumference - (current / 100) * circumference;
       progressEl.style.strokeDashoffset = offset;
@@ -153,6 +161,49 @@ class LuminowApp {
 
     if (gradeEl && grade) {
       gradeEl.textContent = grade;
+    }
+  }
+
+  animateGeoScore(geoResults) {
+    const numberEl = document.getElementById('geoNumber');
+    const progressEl = document.getElementById('geoProgress');
+    const bandEl = document.getElementById('geoBand');
+
+    const score = geoResults.score;
+    const maxScore = 800;
+    const band = geoResults.band;
+
+    // Animate number
+    let current = 0;
+    const duration = 1000;
+    const step = score / (duration / 16);
+
+    const animate = () => {
+      current = Math.min(current + step, score);
+      numberEl.textContent = Math.round(current);
+
+      // Update progress ring (normalize to 0-100 for display)
+      const circumference = 339.292;
+      const normalizedScore = (current / maxScore) * 100;
+      const offset = circumference - (normalizedScore / 100) * circumference;
+      progressEl.style.strokeDashoffset = offset;
+
+      // Update color based on band
+      if (band) {
+        progressEl.style.stroke = band.color;
+      }
+
+      if (current < score) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    animate();
+
+    // Display band
+    if (bandEl && band) {
+      bandEl.textContent = band.band;
+      bandEl.style.color = band.color;
     }
   }
 
@@ -172,36 +223,95 @@ class LuminowApp {
         <span class="issue-badge ${issue.severity}">${issue.severity}</span>
         <div>
           <div class="issue-message">${this.escapeHtml(issue.message)}</div>
-          <div class="issue-category">${this.formatCategory(issue.category)}</div>
+          <div class="issue-category">${this.formatCategory(issue.category || issue.pillar)}</div>
         </div>
       `;
       container.appendChild(item);
     });
   }
 
-  displayChecks(containerId, checks, type) {
+  displaySEOCategories(containerId, categories) {
     const container = document.getElementById(containerId);
     container.innerHTML = '';
 
-    Object.entries(checks).forEach(([name, check]) => {
-      const scoreClass = check.score >= 70 ? 'good' : check.score >= 50 ? 'warning' : 'poor';
-      const statusIcon = check.passed ? '&#10003;' : '&#10007;';
-      const statusClass = check.passed ? 'pass' : 'fail';
+    if (!categories) return;
+
+    Object.entries(categories).forEach(([name, category]) => {
+      const scoreClass = category.percentage >= 70 ? 'good' : category.percentage >= 50 ? 'warning' : 'poor';
+      const statusIcon = category.passed ? '&#10003;' : '&#10007;';
+      const statusClass = category.passed ? 'pass' : 'fail';
 
       const card = document.createElement('div');
       card.className = 'check-card';
       card.innerHTML = `
         <div class="check-header">
           <span class="check-name">${this.formatCategory(name)}</span>
-          <span class="check-score ${scoreClass}">${check.score}</span>
+          <span class="check-score ${scoreClass}">${category.score}/${category.maxScore}</span>
+        </div>
+        <div class="check-progress-bar">
+          <div class="check-progress-fill ${scoreClass}" style="width: ${category.percentage}%"></div>
         </div>
         <div class="check-status">
           <span class="status-icon ${statusClass}">${statusIcon}</span>
-          <span>${check.passed ? 'Passed' : 'Needs improvement'}</span>
+          <span>${category.passed ? 'Passed' : 'Needs improvement'}</span>
+        </div>
+        <div class="check-details">
+          ${this.renderCheckDetails(category.checks)}
         </div>
       `;
       container.appendChild(card);
     });
+  }
+
+  displayGEOPillars(containerId, pillars) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    if (!pillars) return;
+
+    Object.entries(pillars).forEach(([name, pillar]) => {
+      const scoreClass = pillar.percentage >= 70 ? 'good' : pillar.percentage >= 50 ? 'warning' : 'poor';
+      const statusIcon = pillar.passed ? '&#10003;' : '&#10007;';
+      const statusClass = pillar.passed ? 'pass' : 'fail';
+
+      const card = document.createElement('div');
+      card.className = 'check-card geo-pillar';
+      card.innerHTML = `
+        <div class="check-header">
+          <span class="check-name">${pillar.pillarName || this.formatCategory(name)}</span>
+          <span class="check-score ${scoreClass}">${pillar.score}/100</span>
+        </div>
+        <div class="check-progress-bar">
+          <div class="check-progress-fill ${scoreClass}" style="width: ${pillar.percentage}%"></div>
+        </div>
+        <div class="check-status">
+          <span class="status-icon ${statusClass}">${statusIcon}</span>
+          <span>${pillar.passed ? 'Passed' : 'Needs improvement'}</span>
+        </div>
+        <div class="check-details">
+          ${this.renderCheckDetails(pillar.checks)}
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  renderCheckDetails(checks) {
+    if (!checks) return '';
+
+    return Object.entries(checks)
+      .map(([key, check]) => {
+        const statusClass = check.passed ? 'detail-pass' : 'detail-fail';
+        const icon = check.passed ? '&#10003;' : '&#10007;';
+        return `
+          <div class="check-detail-item ${statusClass}">
+            <span class="detail-icon">${icon}</span>
+            <span class="detail-name">${this.formatCategory(key)}</span>
+            <span class="detail-value">${check.value}</span>
+          </div>
+        `;
+      })
+      .join('');
   }
 
   displayRecommendations(results) {
@@ -229,7 +339,7 @@ class LuminowApp {
         <span class="rec-priority ${rec.priority}">${rec.priority}</span>
         <div class="rec-content">
           <div class="rec-text">${this.escapeHtml(rec.recommendation)}</div>
-          <div class="rec-category">${rec.type} - ${this.formatCategory(rec.category)}</div>
+          <div class="rec-category">${rec.type} - ${this.formatCategory(rec.category || rec.pillar)}</div>
         </div>
       `;
       container.appendChild(item);
@@ -269,6 +379,11 @@ class LuminowApp {
     }
 
     results.forEach(result => {
+      // Format GEO score display
+      const geoDisplay = result.geoScore !== undefined
+        ? `${result.geoScore}/800`
+        : '--';
+
       const item = document.createElement('div');
       item.className = 'history-item';
       item.innerHTML = `
@@ -286,7 +401,7 @@ class LuminowApp {
             <div class="history-score-label">SEO</div>
           </div>
           <div class="history-score">
-            <div class="history-score-value" style="color: #10b981">${result.geoScore || '--'}</div>
+            <div class="history-score-value" style="color: #10b981">${geoDisplay}</div>
             <div class="history-score-label">GEO</div>
           </div>
         </div>
@@ -326,21 +441,29 @@ class LuminowApp {
     this.btnText.style.display = 'none';
     this.btnLoader.style.display = 'block';
 
-    // Animate loading status
+    // Animate loading status with algorithm phases
     const statuses = [
-      'Launching headless browser...',
-      'Loading webpage...',
-      'Extracting content...',
-      'Running SEO analysis...',
-      'Running GEO analysis...',
-      'Generating recommendations...',
+      'Phase 1: Launching headless browser...',
+      'Phase 1: Loading webpage...',
+      'Phase 1: Checking crawl accessibility...',
+      'Phase 2: Detecting page type...',
+      'Phase 2: Extracting structured data...',
+      'Phase 2: Extracting product data...',
+      'Phase 3: Running SEO analysis...',
+      'Phase 3: Checking indexability...',
+      'Phase 3: Analyzing content quality...',
+      'Phase 4: Running GEO analysis...',
+      'Phase 4: Checking AI crawl access...',
+      'Phase 4: Analyzing citability...',
+      'Phase 5: Generating recommendations...',
+      'Phase 5: Compiling report...',
     ];
 
     let i = 0;
     this.loadingInterval = setInterval(() => {
       this.loadingStatus.textContent = statuses[i % statuses.length];
       i++;
-    }, 2000);
+    }, 1500);
   }
 
   hideLoading() {
@@ -366,6 +489,7 @@ class LuminowApp {
   }
 
   formatCategory(category) {
+    if (!category) return '';
     return category
       .replace(/([A-Z])/g, ' $1')
       .replace(/^./, str => str.toUpperCase())
@@ -384,6 +508,7 @@ class LuminowApp {
   }
 
   escapeHtml(text) {
+    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
