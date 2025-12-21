@@ -1,6 +1,30 @@
 {
   "results": [
     {
+      "id": "97b254a3-90d4-46d0-930d-0150e7218da7",
+      "url": "https://www.nilkamalfurniture.com/collections/dining-tables",
+      "analyzedAt": "2025-12-21T08:00:21.836Z",
+      "overallScore": 70,
+      "seoScore": 77,
+      "geoScore": 498
+    },
+    {
+      "id": "0e5018d9-8e97-476a-b2d9-58aad5ac1df3",
+      "url": "https://www.nilkamalfurniture.com/",
+      "analyzedAt": "2025-12-21T07:59:07.005Z",
+      "overallScore": 72,
+      "seoScore": 78,
+      "geoScore": 527
+    },
+    {
+      "id": "24633e6b-35bd-47c5-af5c-2b2ee3f2253c",
+      "url": "https://bb-gpt.vercel.app/",
+      "analyzedAt": "2025-12-21T07:56:27.898Z",
+      "overallScore": 59,
+      "seoScore": 70,
+      "geoScore": 380
+    },
+    {
       "id": "6de0ec14-5609-4f9d-ae8b-0314c3ff70d4",
       "url": "https://delrossa.com/collections/clearance-corner/products/alexander-del-rossa-womens-plush-pajama-pants-with-pockets-joggers-with-drawstring-elastic-waist",
       "analyzedAt": "2025-12-21T07:11:38.421Z",
