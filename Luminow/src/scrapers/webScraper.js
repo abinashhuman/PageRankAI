@@ -2,6 +2,10 @@
  * Web Scraper Module
  * Uses Puppeteer (headless browser) to scrape webpages for SEO/GEO analysis
  * Implements Phase 1 (Acquire) and Phase 2 (Understand) of the GEO algorithm
+ *
+ * v2.0 Update: Added robots.txt fetching for AI bot access verification
+ * This is critical for GEO analysis as blocked AI crawlers = zero visibility
+ * in AI-generated answers (RAG pipeline gating)
  */
 
 import puppeteer from 'puppeteer';
@@ -26,23 +30,36 @@ export class WebScraper {
     const startTime = Date.now();
 
     try {
+      // Launch browser using system Chrome for better stability
+      // The bundled Chromium can have socket issues on some systems
+      const chromePath = process.platform === 'darwin'
+        ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+        : undefined; // Use bundled Chrome on other platforms
+
       browser = await puppeteer.launch({
         headless: 'new',
+        executablePath: chromePath,
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
-          '--disable-accelerated-2d-canvas',
           '--disable-gpu',
-          '--disable-extensions',
-          '--disable-background-networking',
+          '--disable-software-rasterizer',
         ],
+        ignoreHTTPSErrors: true,
+        protocolTimeout: 180000,
       });
 
       const page = await browser.newPage();
 
-      // Set user agent
-      await page.setUserAgent(this.userAgent);
+      // Set longer timeouts for complex pages
+      page.setDefaultNavigationTimeout(60000);
+      page.setDefaultTimeout(60000);
+
+      // Set user agent (use a common browser agent to avoid blocks)
+      await page.setUserAgent(
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      );
 
       // Set viewport
       await page.setViewport({ width: 1920, height: 1080 });
@@ -60,11 +77,42 @@ export class WebScraper {
         }
       });
 
-      // Navigate to URL
-      const response = await page.goto(url, {
-        waitUntil: 'networkidle2',
-        timeout: this.timeout,
-      });
+      // Navigate with retry logic for transient errors
+      let response;
+      let lastError;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          response = await page.goto(url, {
+            waitUntil: 'domcontentloaded',
+            timeout: 45000,
+          });
+          // If we get here, navigation succeeded
+          break;
+        } catch (navError) {
+          lastError = navError;
+          const errorMsg = navError.message || '';
+
+          // Retry on transient errors
+          if (attempt < 3 && (
+            errorMsg.includes('frame was detached') ||
+            errorMsg.includes('socket hang up') ||
+            errorMsg.includes('net::ERR_')
+          )) {
+            console.log(`Navigation attempt ${attempt} failed, retrying...`);
+            await new Promise(r => setTimeout(r, 2000 * attempt));
+            continue;
+          }
+          throw navError;
+        }
+      }
+
+      // If all retries failed
+      if (!response && lastError) {
+        throw lastError;
+      }
+
+      // Wait briefly for dynamic content
+      await new Promise(r => setTimeout(r, 1000));
 
       const loadTime = Date.now() - startTime;
       const statusCode = response?.status() || 200;
@@ -111,7 +159,14 @@ export class WebScraper {
         htmlSize: html.length,
       };
 
-      return pageData;
+      // Phase 1.5: Fetch robots.txt for AI bot access verification
+      // This is critical for GEO - if AI bots are blocked, the page has zero visibility
+      const robotsData = await this.fetchRobotsTxt(url);
+
+      return {
+        ...pageData,
+        robotsTxt: robotsData,
+      };
     } catch (error) {
       console.error('Scraping error:', error);
       throw new Error(`Failed to scrape URL: ${error.message}`);
@@ -120,6 +175,256 @@ export class WebScraper {
         await browser.close();
       }
     }
+  }
+
+  /**
+   * Fetch and parse robots.txt for AI bot access verification
+   *
+   * Research basis: RAG pipeline gating
+   * - If a page blocks AI crawlers in robots.txt, it cannot be indexed
+   *   by AI systems, resulting in zero visibility in AI-generated answers
+   * - This is the first gate in the RAG funnel: Crawl → Retrieve → Extract → Rank → Cite
+   *
+   * AI bots checked:
+   * - GPTBot: OpenAI's main crawler for training and browsing
+   * - OAI-SearchBot: OpenAI's SearchGPT/ChatGPT search crawler
+   * - ChatGPT-User: ChatGPT browsing mode
+   * - PerplexityBot: Perplexity AI's search crawler
+   * - ClaudeBot: Anthropic's Claude web crawler
+   * - Claude-Web: Anthropic's web browsing feature
+   * - Amazonbot: Amazon's crawler (for Alexa/AI features)
+   * - anthropic-ai: Anthropic's AI training crawler
+   * - Bytespider: ByteDance's crawler (TikTok AI)
+   * - Google-Extended: Google's AI training crawler (Bard/Gemini)
+   * - CCBot: Common Crawl (used by many AI training datasets)
+   *
+   * @param {string} url - The page URL to check
+   * @returns {Object} - robots.txt data and AI bot access status
+   */
+  async fetchRobotsTxt(url) {
+    const result = {
+      found: false,
+      content: '',
+      aiBotAccess: {
+        gptBot: { allowed: true, rules: [] },
+        oaiSearchBot: { allowed: true, rules: [] },
+        chatgptUser: { allowed: true, rules: [] },
+        perplexityBot: { allowed: true, rules: [] },
+        claudeBot: { allowed: true, rules: [] },
+        claudeWeb: { allowed: true, rules: [] },
+        amazonBot: { allowed: true, rules: [] },
+        anthropicAi: { allowed: true, rules: [] },
+        bytespider: { allowed: true, rules: [] },
+        googleExtended: { allowed: true, rules: [] },
+        ccBot: { allowed: true, rules: [] },
+      },
+      globalDisallow: false,
+      crawlDelay: null,
+    };
+
+    try {
+      const urlObj = new URL(url);
+      const robotsUrl = `${urlObj.protocol}//${urlObj.host}/robots.txt`;
+
+      const response = await fetch(robotsUrl, {
+        headers: {
+          'User-Agent': this.userAgent,
+        },
+        signal: AbortSignal.timeout(10000), // 10s timeout for robots.txt
+      });
+
+      if (response.ok) {
+        result.found = true;
+        result.content = await response.text();
+        result.aiBotAccess = this.parseRobotsTxtForAiBots(result.content, url);
+
+        // Check for global disallow (User-agent: * with Disallow: /)
+        result.globalDisallow = this.checkGlobalDisallow(result.content);
+
+        // Extract crawl delay if present
+        const crawlDelayMatch = result.content.match(/Crawl-delay:\s*(\d+)/i);
+        if (crawlDelayMatch) {
+          result.crawlDelay = parseInt(crawlDelayMatch[1], 10);
+        }
+      }
+    } catch (error) {
+      // robots.txt not found or error - assume access allowed
+      console.warn('Could not fetch robots.txt:', error.message);
+    }
+
+    return result;
+  }
+
+  /**
+   * Parse robots.txt content to check AI bot access
+   *
+   * @param {string} robotsContent - The robots.txt file content
+   * @param {string} pageUrl - The page URL to check against rules
+   * @returns {Object} - AI bot access status for each bot
+   */
+  parseRobotsTxtForAiBots(robotsContent, pageUrl) {
+    const aiBots = {
+      gptBot: { patterns: ['GPTBot'], allowed: true, rules: [] },
+      oaiSearchBot: { patterns: ['OAI-SearchBot'], allowed: true, rules: [] },
+      chatgptUser: { patterns: ['ChatGPT-User'], allowed: true, rules: [] },
+      perplexityBot: { patterns: ['PerplexityBot'], allowed: true, rules: [] },
+      claudeBot: { patterns: ['ClaudeBot', 'claudebot'], allowed: true, rules: [] },
+      claudeWeb: { patterns: ['Claude-Web', 'claude-web'], allowed: true, rules: [] },
+      amazonBot: { patterns: ['Amazonbot'], allowed: true, rules: [] },
+      anthropicAi: { patterns: ['anthropic-ai', 'Anthropic'], allowed: true, rules: [] },
+      bytespider: { patterns: ['Bytespider'], allowed: true, rules: [] },
+      googleExtended: { patterns: ['Google-Extended'], allowed: true, rules: [] },
+      ccBot: { patterns: ['CCBot'], allowed: true, rules: [] },
+    };
+
+    const lines = robotsContent.split('\n');
+    let currentUserAgents = [];
+    let inRelevantBlock = false;
+    let wildcardRules = { allow: [], disallow: [] };
+
+    // First pass: collect wildcard rules
+    let inWildcardBlock = false;
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      if (trimmedLine.startsWith('#') || trimmedLine === '') continue;
+
+      const [directive, ...valueParts] = trimmedLine.split(':');
+      const value = valueParts.join(':').trim();
+
+      if (directive.toLowerCase() === 'user-agent') {
+        inWildcardBlock = value === '*';
+      } else if (inWildcardBlock) {
+        if (directive.toLowerCase() === 'disallow' && value) {
+          wildcardRules.disallow.push(value);
+        } else if (directive.toLowerCase() === 'allow' && value) {
+          wildcardRules.allow.push(value);
+        }
+      }
+    }
+
+    // Second pass: check each AI bot
+    for (const [botKey, botInfo] of Object.entries(aiBots)) {
+      let botRules = { allow: [], disallow: [] };
+      let foundSpecificRules = false;
+
+      for (const line of lines) {
+        const trimmedLine = line.trim();
+        if (trimmedLine.startsWith('#') || trimmedLine === '') continue;
+
+        const [directive, ...valueParts] = trimmedLine.split(':');
+        const value = valueParts.join(':').trim();
+
+        if (directive.toLowerCase() === 'user-agent') {
+          const isRelevantBot = botInfo.patterns.some(
+            pattern => value.toLowerCase() === pattern.toLowerCase()
+          );
+          inRelevantBlock = isRelevantBot;
+          if (isRelevantBot) foundSpecificRules = true;
+        } else if (inRelevantBlock) {
+          if (directive.toLowerCase() === 'disallow' && value) {
+            botRules.disallow.push(value);
+            botInfo.rules.push(`Disallow: ${value}`);
+          } else if (directive.toLowerCase() === 'allow' && value) {
+            botRules.allow.push(value);
+            botInfo.rules.push(`Allow: ${value}`);
+          }
+        }
+      }
+
+      // If no specific rules found, use wildcard rules
+      if (!foundSpecificRules) {
+        botRules = wildcardRules;
+      }
+
+      // Check if the page URL is blocked
+      const pagePath = new URL(pageUrl).pathname;
+      botInfo.allowed = this.isPathAllowed(pagePath, botRules);
+    }
+
+    // Return clean result without patterns
+    const result = {};
+    for (const [key, value] of Object.entries(aiBots)) {
+      result[key] = { allowed: value.allowed, rules: value.rules };
+    }
+    return result;
+  }
+
+  /**
+   * Check if a path is allowed based on robots.txt rules
+   * Implements standard robots.txt matching (longer rules take precedence)
+   */
+  isPathAllowed(path, rules) {
+    // If Disallow: / is present and no specific Allow rule matches, blocked
+    let longestMatch = { length: 0, allowed: true };
+
+    for (const disallowRule of rules.disallow) {
+      if (this.pathMatchesRule(path, disallowRule)) {
+        if (disallowRule.length > longestMatch.length) {
+          longestMatch = { length: disallowRule.length, allowed: false };
+        }
+      }
+    }
+
+    for (const allowRule of rules.allow) {
+      if (this.pathMatchesRule(path, allowRule)) {
+        if (allowRule.length > longestMatch.length) {
+          longestMatch = { length: allowRule.length, allowed: true };
+        }
+      }
+    }
+
+    return longestMatch.allowed;
+  }
+
+  /**
+   * Check if a path matches a robots.txt rule pattern
+   * Supports * and $ wildcards
+   */
+  pathMatchesRule(path, rule) {
+    if (rule === '' || rule === '/') return true;
+
+    // Convert rule to regex
+    let pattern = rule
+      .replace(/[.+^${}()|[\]\\]/g, '\\$&') // Escape regex special chars except * and $
+      .replace(/\*/g, '.*') // * matches anything
+      .replace(/\\\$$/, '$'); // $ at end means end of string
+
+    if (!pattern.endsWith('$')) {
+      pattern = pattern + '.*'; // Rule matches prefix
+    }
+
+    try {
+      const regex = new RegExp('^' + pattern, 'i');
+      return regex.test(path);
+    } catch {
+      return path.startsWith(rule);
+    }
+  }
+
+  /**
+   * Check if robots.txt has a global disallow for all bots
+   */
+  checkGlobalDisallow(robotsContent) {
+    const lines = robotsContent.split('\n');
+    let inWildcardBlock = false;
+
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      if (trimmedLine.startsWith('#') || trimmedLine === '') continue;
+
+      const [directive, ...valueParts] = trimmedLine.split(':');
+      const value = valueParts.join(':').trim();
+
+      if (directive.toLowerCase() === 'user-agent') {
+        inWildcardBlock = value === '*';
+      } else if (inWildcardBlock && directive.toLowerCase() === 'disallow') {
+        if (value === '/' || value === '/*') {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   /**
