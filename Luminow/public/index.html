@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luminow - SEO & GEO Analysis Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon">&#9733;</span>
+          <span class="logo-text">Luminow</span>
+        </div>
+        <nav class="nav">
+          <a href="#" class="nav-link active">Analyze</a>
+          <a href="#history" class="nav-link" id="historyLink">History</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>SEO & GEO Analysis</h1>
+        <p class="hero-subtitle">Optimize your website for both traditional search engines and AI-powered tools</p>
+
+        <!-- URL Input Form -->
+        <form id="analyzeForm" class="analyze-form">
+          <div class="input-group">
+            <input
+              type="url"
+              id="urlInput"
+              class="url-input"
+              placeholder="Enter website URL (e.g., https://example.com)"
+              required
+              autocomplete="url"
+            >
+            <button type="submit" class="analyze-btn" id="analyzeBtn">
+              <span class="btn-text">Analyze</span>
+              <span class="btn-loader" style="display: none;"></span>
+            </button>
+          </div>
+          <p class="input-hint">We'll analyze SEO and AI-readiness (GEO) of your webpage</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results-section" style="display: none;">
+      <div class="container">
+        <!-- Score Cards -->
+        <div class="score-cards">
+          <div class="score-card overall">
+            <div class="score-ring" id="overallScore">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="54" class="score-bg"></circle>
+                <circle cx="60" cy="60" r="54" class="score-progress" id="overallProgress"></circle>
+              </svg>
+              <div class="score-value">
+                <span class="score-number" id="overallNumber">--</span>
+                <span class="score-grade" id="overallGrade"></span>
+              </div>
+            </div>
+            <h3>Overall Score</h3>
+          </div>
+
+          <div class="score-card seo">
+            <div class="score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="54" class="score-bg"></circle>
+                <circle cx="60" cy="60" r="54" class="score-progress" id="seoProgress"></circle>
+              </svg>
+              <div class="score-value">
+                <span class="score-number" id="seoNumber">--</span>
+              </div>
+            </div>
+            <h3>SEO Score</h3>
+            <p class="score-desc">Search Engine Optimization</p>
+          </div>
+
+          <div class="score-card geo">
+            <div class="score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="54" class="score-bg"></circle>
+                <circle cx="60" cy="60" r="54" class="score-progress" id="geoProgress"></circle>
+              </svg>
+              <div class="score-value">
+                <span class="score-number" id="geoNumber">--</span>
+              </div>
+            </div>
+            <h3>GEO Score</h3>
+            <p class="score-desc">AI Citation Readiness</p>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab active" data-tab="issues">Issues</button>
+          <button class="tab" data-tab="seo-details">SEO Details</button>
+          <button class="tab" data-tab="geo-details">GEO Details</button>
+          <button class="tab" data-tab="recommendations">Recommendations</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Issues Tab -->
+          <div class="tab-pane active" id="issues">
+            <div class="issues-container">
+              <div class="issues-column">
+                <h4><span class="issue-icon seo-icon">S</span> SEO Issues</h4>
+                <div id="seoIssues" class="issues-list"></div>
+              </div>
+              <div class="issues-column">
+                <h4><span class="issue-icon geo-icon">G</span> GEO Issues</h4>
+                <div id="geoIssues" class="issues-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEO Details Tab -->
+          <div class="tab-pane" id="seo-details">
+            <div id="seoChecks" class="checks-grid"></div>
+          </div>
+
+          <!-- GEO Details Tab -->
+          <div class="tab-pane" id="geo-details">
+            <div id="geoChecks" class="checks-grid"></div>
+          </div>
+
+          <!-- Recommendations Tab -->
+          <div class="tab-pane" id="recommendations">
+            <div id="recommendationsList" class="recommendations-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="history-section" style="display: none;">
+      <div class="container">
+        <h2>Analysis History</h2>
+        <div id="historyList" class="history-list"></div>
+      </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <h3>Analyzing Website</h3>
+        <p id="loadingStatus">Launching headless browser...</p>
+      </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div id="errorToast" class="toast error" style="display: none;">
+      <span class="toast-message"></span>
+      <button class="toast-close">&times;</button>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
