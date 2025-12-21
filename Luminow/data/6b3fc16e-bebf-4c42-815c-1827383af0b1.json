@@ -1,0 +1,1347 @@
+{
+  "id": "6b3fc16e-bebf-4c42-815c-1827383af0b1",
+  "url": "https://bravafabrics.com/collections/long-sleeve-shirts-man/products/corduroy-overshirt-chocolate?variant=48934103187788",
+  "analyzedAt": "2025-12-21T03:36:24.379Z",
+  "pageInfo": {
+    "title": "Corduroy Overshirt Chocolate – 100% Organic Cotton - Brava FabricsAmerican ExpressApple PayBancontactGoogle PayiDEALMaestroMastercardPayPalShop PayUnion PayVisaClose dialog",
+    "url": "https://bravafabrics.com/collections/long-sleeve-shirts-man/products/corduroy-overshirt-chocolate?variant=48934103187788",
+    "finalUrl": "https://bravafabrics.com/collections/long-sleeve-shirts-man/products/corduroy-overshirt-chocolate?variant=48934103187788",
+    "loadTime": 4195,
+    "statusCode": 200,
+    "pageType": {
+      "type": "product",
+      "confidence": 0.65,
+      "signals": {
+        "product": 65,
+        "category": 45,
+        "article": 0,
+        "homepage": 25
+      },
+      "isProductPage": true
+    },
+    "wordCount": 2109
+  },
+  "seo": {
+    "score": 84,
+    "categories": {
+      "indexability": {
+        "score": 20,
+        "maxScore": 20,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "statusCode": {
+            "value": 200,
+            "passed": true,
+            "points": 5
+          },
+          "noindex": {
+            "value": false,
+            "passed": true,
+            "points": 5
+          },
+          "canonical": {
+            "value": "https://bravafabrics.com/products/corduroy-overshirt-chocolate",
+            "passed": true,
+            "points": 3
+          },
+          "redirects": {
+            "value": 2,
+            "passed": true,
+            "points": 2
+          },
+          "hreflang": {
+            "value": "Not set",
+            "passed": true,
+            "points": 1
+          },
+          "internalLinking": {
+            "value": "No breadcrumbs",
+            "passed": true,
+            "points": 3
+          }
+        },
+        "issues": [],
+        "recommendations": []
+      },
+      "pageExperience": {
+        "score": 9,
+        "maxScore": 15,
+        "percentage": 60,
+        "passed": false,
+        "checks": {
+          "loadTime": {
+            "value": "4.20s",
+            "passed": false,
+            "points": 2
+          },
+          "viewport": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "resourceCount": {
+            "value": "68 resources",
+            "passed": false,
+            "points": 0
+          },
+          "htmlSize": {
+            "value": "766KB",
+            "passed": false,
+            "points": 2
+          },
+          "https": {
+            "value": "Secure",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "Slow page load time: 4.20s",
+            "impact": 3
+          },
+          {
+            "severity": "warning",
+            "message": "High resource count: 68 external resources",
+            "impact": 3
+          }
+        ],
+        "recommendations": [
+          "Target page load time under 3 seconds for better user experience",
+          "Reduce HTTP requests by combining and minifying CSS/JS files"
+        ]
+      },
+      "onPageRelevance": {
+        "score": 24,
+        "maxScore": 25,
+        "percentage": 96,
+        "passed": true,
+        "checks": {
+          "title": {
+            "value": "172 chars",
+            "passed": false,
+            "points": 4
+          },
+          "metaDescription": {
+            "value": "159 chars",
+            "passed": true,
+            "points": 4
+          },
+          "h1": {
+            "value": "1 H1 tag(s)",
+            "passed": true,
+            "points": 5
+          },
+          "headingHierarchy": {
+            "value": "H2: 9, H3: 5",
+            "passed": true,
+            "points": 3
+          },
+          "contentLength": {
+            "value": "2109 words",
+            "passed": true,
+            "points": 5
+          },
+          "paragraphStructure": {
+            "value": "28 paragraphs",
+            "passed": true,
+            "points": 3
+          }
+        },
+        "issues": [],
+        "recommendations": []
+      },
+      "structuredData": {
+        "score": 17,
+        "maxScore": 20,
+        "percentage": 85,
+        "passed": true,
+        "checks": {
+          "hasSchema": {
+            "value": "2 schema(s)",
+            "passed": true,
+            "points": 5
+          },
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 5
+          },
+          "breadcrumbSchema": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "organizationSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "openGraph": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "twitterCard": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "Missing BreadcrumbList schema",
+            "impact": 3
+          }
+        ],
+        "recommendations": [
+          "Add BreadcrumbList schema for better search appearance"
+        ]
+      },
+      "mediaAccessibility": {
+        "score": 6,
+        "maxScore": 10,
+        "percentage": 60,
+        "passed": false,
+        "checks": {
+          "imageAlt": {
+            "value": "26% with alt text",
+            "passed": false,
+            "points": 1
+          },
+          "imageDimensions": {
+            "value": "67% with dimensions",
+            "passed": false,
+            "points": 3
+          },
+          "langAttribute": {
+            "value": "en",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "71 of 96 images missing alt text",
+            "impact": 4
+          }
+        ],
+        "recommendations": [
+          "Add descriptive alt text to all images"
+        ]
+      },
+      "commerceTrust": {
+        "score": 8,
+        "maxScore": 10,
+        "percentage": 80,
+        "passed": true,
+        "checks": {
+          "shippingInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "returnsPolicy": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "reviews": {
+            "value": "Not found",
+            "passed": false,
+            "points": 0
+          },
+          "legalLinks": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "No product reviews or ratings found",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Display customer reviews and ratings for trust"
+        ]
+      }
+    },
+    "issues": [
+      {
+        "category": "mediaAccessibility",
+        "severity": "warning",
+        "message": "71 of 96 images missing alt text",
+        "impact": 4
+      },
+      {
+        "category": "pageExperience",
+        "severity": "warning",
+        "message": "Slow page load time: 4.20s",
+        "impact": 3
+      },
+      {
+        "category": "pageExperience",
+        "severity": "warning",
+        "message": "High resource count: 68 external resources",
+        "impact": 3
+      },
+      {
+        "category": "structuredData",
+        "severity": "info",
+        "message": "Missing BreadcrumbList schema",
+        "impact": 3
+      },
+      {
+        "category": "commerceTrust",
+        "severity": "info",
+        "message": "No product reviews or ratings found",
+        "impact": 2
+      }
+    ],
+    "recommendations": [
+      {
+        "category": "pageExperience",
+        "recommendation": "Target page load time under 3 seconds for better user experience",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "pageExperience",
+        "recommendation": "Reduce HTTP requests by combining and minifying CSS/JS files",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "mediaAccessibility",
+        "recommendation": "Add descriptive alt text to all images",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "structuredData",
+        "recommendation": "Add BreadcrumbList schema for better search appearance",
+        "priority": "low",
+        "potentialImpact": 2
+      },
+      {
+        "category": "commerceTrust",
+        "recommendation": "Display customer reviews and ratings for trust",
+        "priority": "low",
+        "potentialImpact": 2
+      }
+    ],
+    "summary": {
+      "status": "Good",
+      "score": 84,
+      "criticalIssues": 0,
+      "warnings": 3,
+      "message": "Good SEO with minor improvements available."
+    },
+    "checks": {
+      "indexability": {
+        "score": 100,
+        "passed": true,
+        "details": {
+          "statusCode": {
+            "value": 200,
+            "passed": true,
+            "points": 5
+          },
+          "noindex": {
+            "value": false,
+            "passed": true,
+            "points": 5
+          },
+          "canonical": {
+            "value": "https://bravafabrics.com/products/corduroy-overshirt-chocolate",
+            "passed": true,
+            "points": 3
+          },
+          "redirects": {
+            "value": 2,
+            "passed": true,
+            "points": 2
+          },
+          "hreflang": {
+            "value": "Not set",
+            "passed": true,
+            "points": 1
+          },
+          "internalLinking": {
+            "value": "No breadcrumbs",
+            "passed": true,
+            "points": 3
+          }
+        }
+      },
+      "pageExperience": {
+        "score": 60,
+        "passed": false,
+        "details": {
+          "loadTime": {
+            "value": "4.20s",
+            "passed": false,
+            "points": 2
+          },
+          "viewport": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "resourceCount": {
+            "value": "68 resources",
+            "passed": false,
+            "points": 0
+          },
+          "htmlSize": {
+            "value": "766KB",
+            "passed": false,
+            "points": 2
+          },
+          "https": {
+            "value": "Secure",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "onPageRelevance": {
+        "score": 96,
+        "passed": true,
+        "details": {
+          "title": {
+            "value": "172 chars",
+            "passed": false,
+            "points": 4
+          },
+          "metaDescription": {
+            "value": "159 chars",
+            "passed": true,
+            "points": 4
+          },
+          "h1": {
+            "value": "1 H1 tag(s)",
+            "passed": true,
+            "points": 5
+          },
+          "headingHierarchy": {
+            "value": "H2: 9, H3: 5",
+            "passed": true,
+            "points": 3
+          },
+          "contentLength": {
+            "value": "2109 words",
+            "passed": true,
+            "points": 5
+          },
+          "paragraphStructure": {
+            "value": "28 paragraphs",
+            "passed": true,
+            "points": 3
+          }
+        }
+      },
+      "structuredData": {
+        "score": 85,
+        "passed": true,
+        "details": {
+          "hasSchema": {
+            "value": "2 schema(s)",
+            "passed": true,
+            "points": 5
+          },
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 5
+          },
+          "breadcrumbSchema": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "organizationSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "openGraph": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "twitterCard": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "mediaAccessibility": {
+        "score": 60,
+        "passed": false,
+        "details": {
+          "imageAlt": {
+            "value": "26% with alt text",
+            "passed": false,
+            "points": 1
+          },
+          "imageDimensions": {
+            "value": "67% with dimensions",
+            "passed": false,
+            "points": 3
+          },
+          "langAttribute": {
+            "value": "en",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "commerceTrust": {
+        "score": 80,
+        "passed": true,
+        "details": {
+          "shippingInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "returnsPolicy": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "reviews": {
+            "value": "Not found",
+            "passed": false,
+            "points": 0
+          },
+          "legalLinks": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        }
+      }
+    }
+  },
+  "geo": {
+    "score": 687,
+    "maxScore": 800,
+    "band": {
+      "band": "Very Good",
+      "color": "#84cc16",
+      "description": "Well-positioned for AI search"
+    },
+    "pillars": {
+      "aiCrawlAccess": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "httpStatus": {
+            "value": 200,
+            "passed": true,
+            "points": 20
+          },
+          "noindex": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 20
+          },
+          "oaiSearchBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 25
+          },
+          "perplexityBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 20
+          },
+          "snippetControls": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "AI Crawl Access & Snippet Controls"
+      },
+      "productMetadata": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 30
+          },
+          "offerFields": {
+            "value": "Present",
+            "passed": true,
+            "points": 25
+          },
+          "schemaConsistency": {
+            "value": "Checking...",
+            "passed": true,
+            "points": 15
+          },
+          "socialMeta": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "variantHandling": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Product Metadata Readiness"
+      },
+      "entityDisambiguation": {
+        "score": 85,
+        "maxScore": 100,
+        "percentage": 85,
+        "passed": true,
+        "checks": {
+          "productIdentity": {
+            "value": "Complete",
+            "passed": true,
+            "points": 25
+          },
+          "productIdentifiers": {
+            "value": "SKU: Yes, MPN: Yes, GTIN: No",
+            "passed": "4006_S",
+            "points": 25
+          },
+          "schemaIdentifiers": {
+            "value": "In schema",
+            "passed": true,
+            "points": 20
+          },
+          "categoryTaxonomy": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "variantIdentifiers": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "No category/breadcrumb navigation - product context unclear",
+            "impact": 15
+          }
+        ],
+        "recommendations": [
+          "Add breadcrumb navigation showing category hierarchy"
+        ],
+        "pillarName": "Entity Disambiguation & Identifiers"
+      },
+      "informationArchitecture": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "headingHierarchy": {
+            "value": "H1: 1, H2: 9, H3: 5",
+            "passed": true,
+            "points": 25
+          },
+          "bulletLists": {
+            "value": "128 lists, 1086 items",
+            "passed": true,
+            "points": 20
+          },
+          "paragraphLength": {
+            "value": "Good",
+            "passed": true,
+            "points": 15
+          },
+          "specTables": {
+            "value": "None",
+            "passed": true,
+            "points": 15
+          },
+          "semanticHTML": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "contentVisible": {
+            "value": "Assumed visible",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Machine-Scannable Information Architecture"
+      },
+      "shoppingIntentCoverage": {
+        "score": 70,
+        "maxScore": 100,
+        "percentage": 70,
+        "passed": true,
+        "checks": {
+          "useCases": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "compatibility": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "constraints": {
+            "value": "Missing",
+            "passed": true,
+            "points": 5
+          },
+          "whatsIncluded": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "careInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 10
+          },
+          "policies": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "faqContent": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "No compatibility information found",
+            "impact": 10
+          },
+          {
+            "severity": "warning",
+            "message": "No FAQ content - missing common questions users ask",
+            "impact": 20
+          }
+        ],
+        "recommendations": [
+          "Add compatibility details (devices, standards, sizes)",
+          "Add FAQ section with 5-8 common product questions"
+        ],
+        "pillarName": "Shopping Intent Coverage (Answerability)"
+      },
+      "evidenceCitability": {
+        "score": 90,
+        "maxScore": 100,
+        "percentage": 90,
+        "passed": true,
+        "checks": {
+          "statistics": {
+            "value": "28 stats (2.7 per 200 words)",
+            "passed": true,
+            "points": 25
+          },
+          "sourceCitations": {
+            "value": "1 citation(s)",
+            "passed": true,
+            "points": 15
+          },
+          "definitions": {
+            "value": "1 definition(s)",
+            "passed": true,
+            "points": 20
+          },
+          "authorityCues": {
+            "value": "3 cue(s)",
+            "passed": true,
+            "points": 15
+          },
+          "outboundRefs": {
+            "value": "10 external links",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Evidence, Justification & Citability"
+      },
+      "multimodalReadiness": {
+        "score": 67,
+        "maxScore": 100,
+        "percentage": 67,
+        "passed": false,
+        "checks": {
+          "imageCount": {
+            "value": "96 images",
+            "passed": true,
+            "points": 30
+          },
+          "imageAlt": {
+            "value": "26% with alt text",
+            "passed": false,
+            "points": 7
+          },
+          "imageReferences": {
+            "value": "Not referenced",
+            "passed": false,
+            "points": 0
+          },
+          "videoContent": {
+            "value": "Not detected",
+            "passed": true,
+            "points": 5
+          },
+          "imageSchema": {
+            "value": "In schema",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [
+          {
+            "severity": "critical",
+            "message": "71 images missing alt text - AI cannot understand images",
+            "impact": 23
+          },
+          {
+            "severity": "info",
+            "message": "Images not referenced in text content",
+            "impact": 10
+          }
+        ],
+        "recommendations": [
+          "Add descriptive, variant-specific alt text to all images",
+          "Reference images in text (e.g., \"see sizing chart image\")"
+        ],
+        "pillarName": "Multimodal Readiness"
+      },
+      "authoritySignals": {
+        "score": 75,
+        "maxScore": 100,
+        "percentage": 75,
+        "passed": true,
+        "checks": {
+          "sellerIdentity": {
+            "value": "Organization schema present",
+            "passed": true,
+            "points": 25
+          },
+          "transparentPolicies": {
+            "value": "4/5 policies found",
+            "passed": true,
+            "points": 20
+          },
+          "reviewIntegrity": {
+            "value": "No reviews",
+            "passed": true,
+            "points": 10
+          },
+          "authorityCredentials": {
+            "value": "None found",
+            "passed": false,
+            "points": 0
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "offSiteAuthority": {
+            "value": "Not measured (requires external API)",
+            "passed": true,
+            "points": 0
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "No customer reviews - consider adding review system",
+            "impact": 10
+          },
+          {
+            "severity": "info",
+            "message": "No authority credentials detected (certifications, awards, etc.)",
+            "impact": 15
+          }
+        ],
+        "recommendations": [
+          "Add trust signals: certifications, awards, \"trusted by X customers\""
+        ],
+        "pillarName": "Authority Signals"
+      }
+    },
+    "issues": [
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "severity": "critical",
+        "message": "71 images missing alt text - AI cannot understand images",
+        "impact": 23
+      },
+      {
+        "pillar": "shoppingIntentCoverage",
+        "pillarDisplayName": "Shopping Intent Coverage (Answerability)",
+        "severity": "warning",
+        "message": "No FAQ content - missing common questions users ask",
+        "impact": 20
+      },
+      {
+        "pillar": "entityDisambiguation",
+        "pillarDisplayName": "Entity Disambiguation & Identifiers",
+        "severity": "info",
+        "message": "No category/breadcrumb navigation - product context unclear",
+        "impact": 15
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority Signals",
+        "severity": "info",
+        "message": "No authority credentials detected (certifications, awards, etc.)",
+        "impact": 15
+      },
+      {
+        "pillar": "shoppingIntentCoverage",
+        "pillarDisplayName": "Shopping Intent Coverage (Answerability)",
+        "severity": "info",
+        "message": "No compatibility information found",
+        "impact": 10
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "severity": "info",
+        "message": "Images not referenced in text content",
+        "impact": 10
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority Signals",
+        "severity": "info",
+        "message": "No customer reviews - consider adding review system",
+        "impact": 10
+      }
+    ],
+    "recommendations": [
+      {
+        "pillar": "shoppingIntentCoverage",
+        "pillarDisplayName": "Shopping Intent Coverage (Answerability)",
+        "recommendation": "Add compatibility details (devices, standards, sizes)",
+        "priority": "medium",
+        "potentialImpact": 3
+      },
+      {
+        "pillar": "shoppingIntentCoverage",
+        "pillarDisplayName": "Shopping Intent Coverage (Answerability)",
+        "recommendation": "Add FAQ section with 5-8 common product questions",
+        "priority": "medium",
+        "potentialImpact": 3
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "recommendation": "Add descriptive, variant-specific alt text to all images",
+        "priority": "medium",
+        "potentialImpact": 3
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "recommendation": "Reference images in text (e.g., \"see sizing chart image\")",
+        "priority": "medium",
+        "potentialImpact": 3
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority Signals",
+        "recommendation": "Add trust signals: certifications, awards, \"trusted by X customers\"",
+        "priority": "low",
+        "potentialImpact": 3
+      },
+      {
+        "pillar": "entityDisambiguation",
+        "pillarDisplayName": "Entity Disambiguation & Identifiers",
+        "recommendation": "Add breadcrumb navigation showing category hierarchy",
+        "priority": "low",
+        "potentialImpact": 2
+      }
+    ],
+    "summary": {
+      "score": 687,
+      "maxScore": 800,
+      "band": "Very Good",
+      "bandColor": "#84cc16",
+      "description": "Well-positioned for AI search",
+      "criticalIssues": 1,
+      "warnings": 1,
+      "message": "Very good GEO optimization. Your content is well-positioned to be cited by AI systems."
+    },
+    "checks": {
+      "aiCrawlAccess": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "AI Crawl Access & Snippet Controls",
+        "details": {
+          "httpStatus": {
+            "value": 200,
+            "passed": true,
+            "points": 20
+          },
+          "noindex": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 20
+          },
+          "oaiSearchBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 25
+          },
+          "perplexityBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 20
+          },
+          "snippetControls": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "productMetadata": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "Product Metadata Readiness",
+        "details": {
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 30
+          },
+          "offerFields": {
+            "value": "Present",
+            "passed": true,
+            "points": 25
+          },
+          "schemaConsistency": {
+            "value": "Checking...",
+            "passed": true,
+            "points": 15
+          },
+          "socialMeta": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "variantHandling": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "entityDisambiguation": {
+        "score": 85,
+        "maxScore": 100,
+        "percentage": 85,
+        "passed": true,
+        "pillarName": "Entity Disambiguation & Identifiers",
+        "details": {
+          "productIdentity": {
+            "value": "Complete",
+            "passed": true,
+            "points": 25
+          },
+          "productIdentifiers": {
+            "value": "SKU: Yes, MPN: Yes, GTIN: No",
+            "passed": "4006_S",
+            "points": 25
+          },
+          "schemaIdentifiers": {
+            "value": "In schema",
+            "passed": true,
+            "points": 20
+          },
+          "categoryTaxonomy": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "variantIdentifiers": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "informationArchitecture": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "Machine-Scannable Information Architecture",
+        "details": {
+          "headingHierarchy": {
+            "value": "H1: 1, H2: 9, H3: 5",
+            "passed": true,
+            "points": 25
+          },
+          "bulletLists": {
+            "value": "128 lists, 1086 items",
+            "passed": true,
+            "points": 20
+          },
+          "paragraphLength": {
+            "value": "Good",
+            "passed": true,
+            "points": 15
+          },
+          "specTables": {
+            "value": "None",
+            "passed": true,
+            "points": 15
+          },
+          "semanticHTML": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "contentVisible": {
+            "value": "Assumed visible",
+            "passed": true,
+            "points": 10
+          }
+        }
+      },
+      "shoppingIntentCoverage": {
+        "score": 70,
+        "maxScore": 100,
+        "percentage": 70,
+        "passed": true,
+        "pillarName": "Shopping Intent Coverage (Answerability)",
+        "details": {
+          "useCases": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "compatibility": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "constraints": {
+            "value": "Missing",
+            "passed": true,
+            "points": 5
+          },
+          "whatsIncluded": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "careInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 10
+          },
+          "policies": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "faqContent": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          }
+        }
+      },
+      "evidenceCitability": {
+        "score": 90,
+        "maxScore": 100,
+        "percentage": 90,
+        "passed": true,
+        "pillarName": "Evidence, Justification & Citability",
+        "details": {
+          "statistics": {
+            "value": "28 stats (2.7 per 200 words)",
+            "passed": true,
+            "points": 25
+          },
+          "sourceCitations": {
+            "value": "1 citation(s)",
+            "passed": true,
+            "points": 15
+          },
+          "definitions": {
+            "value": "1 definition(s)",
+            "passed": true,
+            "points": 20
+          },
+          "authorityCues": {
+            "value": "3 cue(s)",
+            "passed": true,
+            "points": 15
+          },
+          "outboundRefs": {
+            "value": "10 external links",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "multimodalReadiness": {
+        "score": 67,
+        "maxScore": 100,
+        "percentage": 67,
+        "passed": false,
+        "pillarName": "Multimodal Readiness",
+        "details": {
+          "imageCount": {
+            "value": "96 images",
+            "passed": true,
+            "points": 30
+          },
+          "imageAlt": {
+            "value": "26% with alt text",
+            "passed": false,
+            "points": 7
+          },
+          "imageReferences": {
+            "value": "Not referenced",
+            "passed": false,
+            "points": 0
+          },
+          "videoContent": {
+            "value": "Not detected",
+            "passed": true,
+            "points": 5
+          },
+          "imageSchema": {
+            "value": "In schema",
+            "passed": true,
+            "points": 10
+          }
+        }
+      },
+      "authoritySignals": {
+        "score": 75,
+        "maxScore": 100,
+        "percentage": 75,
+        "passed": true,
+        "pillarName": "Authority Signals",
+        "details": {
+          "sellerIdentity": {
+            "value": "Organization schema present",
+            "passed": true,
+            "points": 25
+          },
+          "transparentPolicies": {
+            "value": "4/5 policies found",
+            "passed": true,
+            "points": 20
+          },
+          "reviewIntegrity": {
+            "value": "No reviews",
+            "passed": true,
+            "points": 10
+          },
+          "authorityCredentials": {
+            "value": "None found",
+            "passed": false,
+            "points": 0
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "offSiteAuthority": {
+            "value": "Not measured (requires external API)",
+            "passed": true,
+            "points": 0
+          }
+        }
+      }
+    }
+  },
+  "overallScore": {
+    "score": 85,
+    "grade": "A-",
+    "breakdown": {
+      "seo": {
+        "score": 84,
+        "maxScore": 100,
+        "weight": "50%"
+      },
+      "geo": {
+        "score": 687,
+        "maxScore": 800,
+        "normalized": 86,
+        "band": "Very Good",
+        "weight": "50%"
+      }
+    }
+  },
+  "extractedProduct": {
+    "name": "Corduroy Overshirt Chocolate",
+    "price": 129,
+    "currency": "EUR",
+    "availability": "http://schema.org/InStock",
+    "sku": "4006_S",
+    "gtin": "",
+    "mpn": "5056709426356",
+    "brand": "Brava Fabrics",
+    "description": "Warm tones, endless versatility. This chocolate brown corduroy overshirt is your new go-to for layering. Made from 100% organic cotton and ethically crafted in Portugal, it blends rugged charm with a soft feel—perfect for gallery strolls, studio days, or coffee catch-ups.",
+    "rating": null,
+    "reviewCount": 0,
+    "variants": [],
+    "hasAddToCart": true,
+    "hasVariants": true
+  }
+}
