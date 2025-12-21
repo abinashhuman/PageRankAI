@@ -289,29 +289,275 @@ class LuminowApp {
           <span>${pillar.passed ? 'Passed' : 'Needs improvement'}</span>
         </div>
         <div class="check-details">
-          ${this.renderCheckDetails(pillar.checks)}
+          ${this.renderCheckDetails(pillar.checks, true)}
         </div>
       `;
       container.appendChild(card);
     });
   }
 
-  renderCheckDetails(checks) {
+  renderCheckDetails(checks, isGeo = false) {
     if (!checks) return '';
 
     return Object.entries(checks)
       .map(([key, check]) => {
         const statusClass = check.passed ? 'detail-pass' : 'detail-fail';
         const icon = check.passed ? '&#10003;' : '&#10007;';
+        const example = isGeo ? this.getGeoExample(key, check.passed) : null;
+        const tooltipAttr = example ? `data-tooltip="${this.escapeHtml(example)}"` : '';
+        const tooltipClass = example ? 'has-tooltip' : '';
+
         return `
-          <div class="check-detail-item ${statusClass}">
+          <div class="check-detail-item ${statusClass} ${tooltipClass}" ${tooltipAttr}>
             <span class="detail-icon">${icon}</span>
             <span class="detail-name">${this.formatCategory(key)}</span>
             <span class="detail-value">${check.value}</span>
+            ${example ? '<span class="tooltip-icon">?</span>' : ''}
           </div>
         `;
       })
       .join('');
+  }
+
+  getGeoExample(checkKey, passed) {
+    const examples = {
+      // AI Crawl Access & Snippet Controls (v2.0)
+      httpStatus: {
+        pass: 'Good: HTTP 200 OK allows AI crawlers to access content',
+        fail: 'Bad: HTTP 404/500 blocks AI from reading page content'
+      },
+      noindex: {
+        pass: 'Good: Page is indexable by AI search engines',
+        fail: 'Bad: <meta name="robots" content="noindex"> blocks AI indexing'
+      },
+      oaiSearchBot: {
+        pass: 'Good: ChatGPT/OpenAI can crawl and cite this page',
+        fail: 'Bad: robots.txt blocks OAI-SearchBot from accessing content'
+      },
+      perplexityBot: {
+        pass: 'Good: Perplexity AI can crawl and cite this page',
+        fail: 'Bad: robots.txt blocks PerplexityBot from accessing content'
+      },
+      claudeBot: {
+        pass: 'Good: Anthropic Claude can crawl and cite this page',
+        fail: 'Bad: robots.txt blocks ClaudeBot from accessing content'
+      },
+      gptBot: {
+        pass: 'Good: OpenAI GPTBot can access for training/browsing',
+        fail: 'Bad: robots.txt blocks GPTBot from accessing content'
+      },
+      googleExtended: {
+        pass: 'Good: Google Gemini/Bard can train on this content',
+        fail: 'Bad: robots.txt blocks Google-Extended crawler'
+      },
+      snippetControls: {
+        pass: 'Good: No snippet restrictions - AI can quote content freely',
+        fail: 'Bad: max-snippet:0 prevents AI from displaying content excerpts'
+      },
+
+      // Product Metadata Readiness
+      productSchema: {
+        pass: 'Good: {"@type":"Product", "name":"...", "offers":{...}}',
+        fail: 'Bad: No Product schema - AI cannot extract structured data'
+      },
+      offerFields: {
+        pass: 'Good: "offers":{"price":"999", "priceCurrency":"USD", "availability":"InStock"}',
+        fail: 'Bad: Missing price/currency/availability in schema'
+      },
+      schemaConsistency: {
+        pass: 'Good: Schema data matches visible page content',
+        fail: 'Bad: Schema price/title differs from what users see on page'
+      },
+      socialMeta: {
+        pass: 'Good: Open Graph + Twitter Card meta tags present',
+        fail: 'Bad: No og:title, og:image - poor social/AI preview'
+      },
+      variantHandling: {
+        pass: 'Good: Each variant has unique URL or proper schema',
+        fail: 'Bad: Product variants not properly structured for AI'
+      },
+
+      // Entity Disambiguation & Identifiers
+      topicClarity: {
+        pass: 'Good: Page clearly about one specific product/topic',
+        fail: 'Bad: Unclear focus - AI cannot determine main subject'
+      },
+      productIdentity: {
+        pass: 'Good: Clear brand + product name + model in title and H1',
+        fail: 'Bad: Generic title - AI may confuse with similar products'
+      },
+      productIdentifiers: {
+        pass: 'Good: GTIN/UPC: 0194253154082, SKU: MTQR3LL/A, MPN: A2846',
+        fail: 'Bad: No unique identifiers - cannot match across retailers'
+      },
+      schemaIdentifiers: {
+        pass: 'Good: "gtin":"0194253154082", "sku":"...", "mpn":"..."',
+        fail: 'Bad: Schema missing gtin/sku/mpn identifiers'
+      },
+      categoryTaxonomy: {
+        pass: 'Good: Electronics > Phones > Smartphones > iPhone',
+        fail: 'Bad: No category breadcrumb - AI cannot classify product'
+      },
+      variantIdentifiers: {
+        pass: 'Good: Each color/size variant has unique identifier',
+        fail: 'Bad: Variants share same SKU - AI cannot distinguish'
+      },
+
+      // Machine-Scannable Information Architecture
+      headingHierarchy: {
+        pass: 'Good: H1 > H2 (Specs, Reviews, FAQ) > H3 (subsections)',
+        fail: 'Bad: Only H1 or skipped levels - hard for AI to chunk content'
+      },
+      bulletLists: {
+        pass: 'Good: <ul><li>48MP camera</li><li>256GB storage</li></ul>',
+        fail: 'Bad: Specs in paragraphs - AI cannot easily extract features'
+      },
+      paragraphLength: {
+        pass: 'Good: Short paragraphs (2-3 sentences each)',
+        fail: 'Bad: Long paragraphs - key facts buried, harder to cite'
+      },
+      specTables: {
+        pass: 'Good: <table><tr><th>Display</th><td>6.1" OLED</td></tr></table>',
+        fail: 'Bad: No tables - technical specs not in structured format'
+      },
+      semanticHTML: {
+        pass: 'Good: <main>, <article>, <section>, <aside> elements used',
+        fail: 'Bad: Only <div> elements - no semantic meaning for AI'
+      },
+      contentVisible: {
+        pass: 'Good: Content visible without JavaScript interaction',
+        fail: 'Bad: Content hidden in tabs/accordions - AI may miss it'
+      },
+
+      // Shopping Intent Coverage
+      useCases: {
+        pass: 'Good: "Perfect for photographers, content creators..."',
+        fail: 'Bad: No use cases - cannot answer "Is X good for Y?"'
+      },
+      compatibility: {
+        pass: 'Good: "Works with iOS 17+, Qi2 chargers, MagSafe..."',
+        fail: 'Bad: No compatibility info - cannot answer "Does X work with Y?"'
+      },
+      constraints: {
+        pass: 'Good: "Requires 5G network, not waterproof below 6m"',
+        fail: 'Bad: No limitations listed - incomplete product info'
+      },
+      whatsIncluded: {
+        pass: 'Good: "In the box: Phone, USB-C cable, documentation"',
+        fail: 'Bad: No "what\'s included" - common purchase question unanswered'
+      },
+      careInfo: {
+        pass: 'Good: "Clean with soft cloth, avoid extreme temperatures"',
+        fail: 'Bad: No care instructions - maintenance questions unanswered'
+      },
+      policies: {
+        pass: 'Good: "Free shipping over $50, 30-day returns, 1-year warranty"',
+        fail: 'Bad: No policy info - trust-related questions unanswered'
+      },
+      faqContent: {
+        pass: 'Good: FAQ section with common questions and answers',
+        fail: 'Bad: No FAQ - missing answers to common queries'
+      },
+
+      // Answerability (v2.0 additions)
+      specifications: {
+        pass: 'Good: Detailed specs with measurements, dimensions, capacity',
+        fail: 'Bad: No technical specifications - cannot answer "what are the specs?"'
+      },
+
+      // Evidence, Justification & Citability (v2.0 - highest weight pillar)
+      statistics: {
+        pass: 'Good: "48MP sensor", "22-hour battery", "4x faster A17 chip"',
+        fail: 'Bad: No specific numbers - claims too vague to cite'
+      },
+      sourceCitations: {
+        pass: 'Good: "According to DisplayMate...", "FCC certified..."',
+        fail: 'Bad: Claims without sources - reduced credibility for AI'
+      },
+      definitions: {
+        pass: 'Good: "ProMotion is adaptive 120Hz refresh technology..."',
+        fail: 'Bad: Technical jargon without explanation'
+      },
+      authorityCues: {
+        pass: 'Good: "Award-winning", "1M+ sold", "ISO 9001 certified"',
+        fail: 'Bad: No social proof or authority signals'
+      },
+      outboundRefs: {
+        pass: 'Good: Links to official specs, certifications, reviews',
+        fail: 'Bad: No external references - appears less authoritative'
+      },
+      contentFreshness: {
+        pass: 'Good: Updated date visible (e.g., "Last updated: Dec 2024")',
+        fail: 'Bad: No dates - AI may deprioritize stale content'
+      },
+      factDensity: {
+        pass: 'Good: High fact density (5+ facts per 100 words)',
+        fail: 'Bad: Low fact density - content is filler, not citable facts'
+      },
+
+      // Multimodal Readiness
+      imageCount: {
+        pass: 'Good: 5+ images showing product from multiple angles',
+        fail: 'Bad: No/few images - AI cannot understand product visually'
+      },
+      imageAlt: {
+        pass: 'Good: alt="iPhone 15 Pro in Natural Titanium, front view"',
+        fail: 'Bad: alt="" or alt="img1" - AI cannot understand image'
+      },
+      imageReferences: {
+        pass: 'Good: "As shown above, the camera features..."',
+        fail: 'Bad: Images not referenced in text content'
+      },
+      videoContent: {
+        pass: 'Good: Product video with transcript/description',
+        fail: 'Bad: Video without accessible text alternative'
+      },
+      imageSchema: {
+        pass: 'Good: "image":["url1","url2"] in Product schema',
+        fail: 'Bad: No images in schema - AI cannot access them'
+      },
+
+      // Authority Signals
+      sellerIdentity: {
+        pass: 'Good: {"@type":"Organization", "name":"Apple Inc."}',
+        fail: 'Bad: No Organization schema - seller identity unclear'
+      },
+      transparentPolicies: {
+        pass: 'Good: Links to Shipping, Returns, Warranty, Privacy, Terms',
+        fail: 'Bad: Missing policy pages - reduced trust signals'
+      },
+      reviewIntegrity: {
+        pass: 'Good: {"aggregateRating":{"ratingValue":"4.8","reviewCount":"2847"}}',
+        fail: 'Bad: Reviews without structured schema data'
+      },
+      authorityCredentials: {
+        pass: 'Good: "Official Store", "Authorized Dealer", "Since 1976"',
+        fail: 'Bad: No credentials - cannot verify seller legitimacy'
+      },
+      contactInfo: {
+        pass: 'Good: Phone, email, and physical address visible',
+        fail: 'Bad: No contact info - trust and legitimacy concern'
+      },
+      offSiteAuthority: {
+        pass: 'Good: Strong domain authority from external backlinks',
+        fail: 'Bad: Limited external authority signals'
+      },
+
+      // Generic fallbacks for non-product pages
+      notApplicable: {
+        pass: 'This check is not applicable for this page type',
+        fail: 'This check is not applicable for this page type'
+      },
+      generalContent: {
+        pass: 'Good: Page has sufficient content for analysis',
+        fail: 'Bad: Insufficient content for meaningful analysis'
+      }
+    };
+
+    const example = examples[checkKey];
+    if (!example) return null;
+
+    return passed ? example.pass : example.fail;
   }
 
   displayRecommendations(results) {

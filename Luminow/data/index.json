@@ -1,6 +1,70 @@
 {
   "results": [
     {
+      "id": "6de0ec14-5609-4f9d-ae8b-0314c3ff70d4",
+      "url": "https://delrossa.com/collections/clearance-corner/products/alexander-del-rossa-womens-plush-pajama-pants-with-pockets-joggers-with-drawstring-elastic-waist",
+      "analyzedAt": "2025-12-21T07:11:38.421Z",
+      "overallScore": 74,
+      "seoScore": 85,
+      "geoScore": 503
+    },
+    {
+      "id": "a249e74e-de5b-492f-9acf-47e9b1988d65",
+      "url": "https://delrossa.com/collections/clearance-corner/clearance",
+      "analyzedAt": "2025-12-21T07:11:06.845Z",
+      "overallScore": 71,
+      "seoScore": 76,
+      "geoScore": 524
+    },
+    {
+      "id": "dd285e57-7ce6-4be8-81ef-577e6be110f3",
+      "url": "https://www.amazon.com",
+      "analyzedAt": "2025-12-21T07:10:45.629Z",
+      "overallScore": 56,
+      "seoScore": 72,
+      "geoScore": 319
+    },
+    {
+      "id": "15cbc80c-f84d-4cec-8312-c6835467539d",
+      "url": "https://example.com",
+      "analyzedAt": "2025-12-21T07:10:38.518Z",
+      "overallScore": 50,
+      "seoScore": 60,
+      "geoScore": 326
+    },
+    {
+      "id": "d6dd5cc3-d16c-4cc1-9009-2edb53193f59",
+      "url": "https://example.com",
+      "analyzedAt": "2025-12-21T07:02:24.761Z",
+      "overallScore": 53,
+      "seoScore": 65,
+      "geoScore": 326
+    },
+    {
+      "id": "55f97a7f-8120-43fa-add1-8d38dcf11b37",
+      "url": "https://delrossa.com/collections/clearance-corner/products/alexander-del-rossa-womens-leopard-print-robe-knee-length-satin-lace-trim",
+      "analyzedAt": "2025-12-21T06:36:34.967Z",
+      "overallScore": 82,
+      "seoScore": 78,
+      "geoScore": 684
+    },
+    {
+      "id": "bbfe432c-d782-43f6-a9e1-4de4be1cb301",
+      "url": "https://delrossa.com/collections/pajama-sets/products/alexander-del-rossa-womens-one-piece-hooded-footed-pajamas-adult-onesie-with-hood",
+      "analyzedAt": "2025-12-21T06:09:55.897Z",
+      "overallScore": 83,
+      "seoScore": 79,
+      "geoScore": 688
+    },
+    {
+      "id": "2744a94a-392b-47f4-bad7-1f38d95d4ea5",
+      "url": "https://delrossa.com/collections/bathrobes/products/alexander-del-rossa-womens-warm-fleece-robe-with-hood-long-plush-sherpa-bathrobe",
+      "analyzedAt": "2025-12-21T03:48:26.081Z",
+      "overallScore": 83,
+      "seoScore": 79,
+      "geoScore": 688
+    },
+    {
       "id": "6b3fc16e-bebf-4c42-815c-1827383af0b1",
       "url": "https://bravafabrics.com/collections/long-sleeve-shirts-man/products/corduroy-overshirt-chocolate?variant=48934103187788",
       "analyzedAt": "2025-12-21T03:36:24.379Z",

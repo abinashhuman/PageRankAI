@@ -1,0 +1,1376 @@
+{
+  "id": "55f97a7f-8120-43fa-add1-8d38dcf11b37",
+  "url": "https://delrossa.com/collections/clearance-corner/products/alexander-del-rossa-womens-leopard-print-robe-knee-length-satin-lace-trim",
+  "analyzedAt": "2025-12-21T06:36:34.967Z",
+  "pageInfo": {
+    "title": "ADR Womens Leopard Print Robe, Short Satin Silk Lace Trim – Alexander Del Rossa\n  LeftToggle menuToggle menuToggle menuToggle menuToggle menuToggle menuToggle menuToggle menuLeftToggle menuToggle menuToggle menuToggle menuToggle menuToggle menuToggle menuToggle menuRightRightLeftRightLeftRightFacebookTwitterPinterestFacebookTwitterPinterestLeftRightLeftRightLeftRightLeftRightFacebookInstagramAmazonAmerican ExpressApple PayDiners ClubDiscoverGoogle PayMastercardPayPalShop PayVisa",
+    "url": "https://delrossa.com/collections/clearance-corner/products/alexander-del-rossa-womens-leopard-print-robe-knee-length-satin-lace-trim",
+    "finalUrl": "https://delrossa.com/collections/clearance-corner/products/alexander-del-rossa-womens-leopard-print-robe-knee-length-satin-lace-trim",
+    "loadTime": 5453,
+    "statusCode": 200,
+    "pageType": {
+      "type": "product",
+      "confidence": 0.65,
+      "signals": {
+        "product": 65,
+        "category": 60,
+        "article": 25,
+        "homepage": 0
+      },
+      "isProductPage": true
+    },
+    "wordCount": 2323
+  },
+  "seo": {
+    "score": 78,
+    "categories": {
+      "indexability": {
+        "score": 18,
+        "maxScore": 20,
+        "percentage": 90,
+        "passed": true,
+        "checks": {
+          "statusCode": {
+            "value": 200,
+            "passed": true,
+            "points": 5
+          },
+          "noindex": {
+            "value": false,
+            "passed": true,
+            "points": 5
+          },
+          "canonical": {
+            "value": "https://delrossa.com/products/alexander-del-rossa-womens-leopard-print-robe-knee-length-satin-lace-trim",
+            "passed": true,
+            "points": 3
+          },
+          "redirects": {
+            "value": 7,
+            "passed": false,
+            "points": 0
+          },
+          "hreflang": {
+            "value": "Not set",
+            "passed": true,
+            "points": 1
+          },
+          "internalLinking": {
+            "value": "Has breadcrumbs",
+            "passed": true,
+            "points": 3
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "Long redirect chain: 7 redirects",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Reduce redirect chains to a maximum of 1-2 redirects"
+        ]
+      },
+      "pageExperience": {
+        "score": 7,
+        "maxScore": 15,
+        "percentage": 47,
+        "passed": false,
+        "checks": {
+          "loadTime": {
+            "value": "5.45s",
+            "passed": false,
+            "points": 0
+          },
+          "viewport": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "resourceCount": {
+            "value": "54 resources",
+            "passed": false,
+            "points": 0
+          },
+          "htmlSize": {
+            "value": "558KB",
+            "passed": false,
+            "points": 2
+          },
+          "https": {
+            "value": "Secure",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "critical",
+            "message": "Very slow page load time: 5.45s",
+            "impact": 5
+          },
+          {
+            "severity": "warning",
+            "message": "High resource count: 54 external resources",
+            "impact": 3
+          }
+        ],
+        "recommendations": [
+          "Optimize page load time to under 3 seconds",
+          "Reduce HTTP requests by combining and minifying CSS/JS files"
+        ]
+      },
+      "onPageRelevance": {
+        "score": 21,
+        "maxScore": 25,
+        "percentage": 84,
+        "passed": true,
+        "checks": {
+          "title": {
+            "value": "483 chars",
+            "passed": false,
+            "points": 4
+          },
+          "metaDescription": {
+            "value": "320 chars",
+            "passed": false,
+            "points": 3
+          },
+          "h1": {
+            "value": "4 H1 tag(s)",
+            "passed": false,
+            "points": 3
+          },
+          "headingHierarchy": {
+            "value": "H2: 3, H3: 30",
+            "passed": true,
+            "points": 3
+          },
+          "contentLength": {
+            "value": "2323 words",
+            "passed": true,
+            "points": 5
+          },
+          "paragraphStructure": {
+            "value": "29 paragraphs",
+            "passed": true,
+            "points": 3
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "Multiple H1 headings found: 4",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Use only one H1 heading per page"
+        ]
+      },
+      "structuredData": {
+        "score": 18,
+        "maxScore": 20,
+        "percentage": 90,
+        "passed": true,
+        "checks": {
+          "hasSchema": {
+            "value": "4 schema(s)",
+            "passed": true,
+            "points": 5
+          },
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 5
+          },
+          "breadcrumbSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "organizationSchema": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "openGraph": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "twitterCard": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "Missing Organization schema",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Add Organization schema with logo and contact information"
+        ]
+      },
+      "mediaAccessibility": {
+        "score": 6,
+        "maxScore": 10,
+        "percentage": 60,
+        "passed": false,
+        "checks": {
+          "imageAlt": {
+            "value": "71% with alt text",
+            "passed": false,
+            "points": 3
+          },
+          "imageDimensions": {
+            "value": "3% with dimensions",
+            "passed": false,
+            "points": 1
+          },
+          "langAttribute": {
+            "value": "en",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "9 of 31 images missing alt text",
+            "impact": 2
+          },
+          {
+            "severity": "info",
+            "message": "30 images missing width/height attributes",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Add descriptive alt text to all images",
+          "Add width and height attributes to prevent layout shifts"
+        ]
+      },
+      "commerceTrust": {
+        "score": 8,
+        "maxScore": 10,
+        "percentage": 80,
+        "passed": true,
+        "checks": {
+          "shippingInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "returnsPolicy": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "reviews": {
+            "value": "Not found",
+            "passed": false,
+            "points": 0
+          },
+          "legalLinks": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "No product reviews or ratings found",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Display customer reviews and ratings for trust"
+        ]
+      }
+    },
+    "issues": [
+      {
+        "category": "pageExperience",
+        "severity": "critical",
+        "message": "Very slow page load time: 5.45s",
+        "impact": 5
+      },
+      {
+        "category": "pageExperience",
+        "severity": "warning",
+        "message": "High resource count: 54 external resources",
+        "impact": 3
+      },
+      {
+        "category": "indexability",
+        "severity": "warning",
+        "message": "Long redirect chain: 7 redirects",
+        "impact": 2
+      },
+      {
+        "category": "onPageRelevance",
+        "severity": "warning",
+        "message": "Multiple H1 headings found: 4",
+        "impact": 2
+      },
+      {
+        "category": "structuredData",
+        "severity": "info",
+        "message": "Missing Organization schema",
+        "impact": 2
+      },
+      {
+        "category": "mediaAccessibility",
+        "severity": "info",
+        "message": "9 of 31 images missing alt text",
+        "impact": 2
+      },
+      {
+        "category": "mediaAccessibility",
+        "severity": "info",
+        "message": "30 images missing width/height attributes",
+        "impact": 2
+      },
+      {
+        "category": "commerceTrust",
+        "severity": "info",
+        "message": "No product reviews or ratings found",
+        "impact": 2
+      }
+    ],
+    "recommendations": [
+      {
+        "category": "pageExperience",
+        "recommendation": "Optimize page load time to under 3 seconds",
+        "priority": "high",
+        "potentialImpact": 5
+      },
+      {
+        "category": "pageExperience",
+        "recommendation": "Reduce HTTP requests by combining and minifying CSS/JS files",
+        "priority": "high",
+        "potentialImpact": 5
+      },
+      {
+        "category": "mediaAccessibility",
+        "recommendation": "Add descriptive alt text to all images",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "mediaAccessibility",
+        "recommendation": "Add width and height attributes to prevent layout shifts",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "indexability",
+        "recommendation": "Reduce redirect chains to a maximum of 1-2 redirects",
+        "priority": "low",
+        "potentialImpact": 1
+      },
+      {
+        "category": "onPageRelevance",
+        "recommendation": "Use only one H1 heading per page",
+        "priority": "low",
+        "potentialImpact": 2
+      },
+      {
+        "category": "structuredData",
+        "recommendation": "Add Organization schema with logo and contact information",
+        "priority": "low",
+        "potentialImpact": 1
+      },
+      {
+        "category": "commerceTrust",
+        "recommendation": "Display customer reviews and ratings for trust",
+        "priority": "low",
+        "potentialImpact": 2
+      }
+    ],
+    "summary": {
+      "status": "Needs Improvement",
+      "score": 78,
+      "criticalIssues": 1,
+      "warnings": 3,
+      "message": "Your page needs SEO improvements. Found 1 critical issues and 3 warnings."
+    },
+    "checks": {
+      "indexability": {
+        "score": 90,
+        "passed": true,
+        "details": {
+          "statusCode": {
+            "value": 200,
+            "passed": true,
+            "points": 5
+          },
+          "noindex": {
+            "value": false,
+            "passed": true,
+            "points": 5
+          },
+          "canonical": {
+            "value": "https://delrossa.com/products/alexander-del-rossa-womens-leopard-print-robe-knee-length-satin-lace-trim",
+            "passed": true,
+            "points": 3
+          },
+          "redirects": {
+            "value": 7,
+            "passed": false,
+            "points": 0
+          },
+          "hreflang": {
+            "value": "Not set",
+            "passed": true,
+            "points": 1
+          },
+          "internalLinking": {
+            "value": "Has breadcrumbs",
+            "passed": true,
+            "points": 3
+          }
+        }
+      },
+      "pageExperience": {
+        "score": 47,
+        "passed": false,
+        "details": {
+          "loadTime": {
+            "value": "5.45s",
+            "passed": false,
+            "points": 0
+          },
+          "viewport": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "resourceCount": {
+            "value": "54 resources",
+            "passed": false,
+            "points": 0
+          },
+          "htmlSize": {
+            "value": "558KB",
+            "passed": false,
+            "points": 2
+          },
+          "https": {
+            "value": "Secure",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "onPageRelevance": {
+        "score": 84,
+        "passed": true,
+        "details": {
+          "title": {
+            "value": "483 chars",
+            "passed": false,
+            "points": 4
+          },
+          "metaDescription": {
+            "value": "320 chars",
+            "passed": false,
+            "points": 3
+          },
+          "h1": {
+            "value": "4 H1 tag(s)",
+            "passed": false,
+            "points": 3
+          },
+          "headingHierarchy": {
+            "value": "H2: 3, H3: 30",
+            "passed": true,
+            "points": 3
+          },
+          "contentLength": {
+            "value": "2323 words",
+            "passed": true,
+            "points": 5
+          },
+          "paragraphStructure": {
+            "value": "29 paragraphs",
+            "passed": true,
+            "points": 3
+          }
+        }
+      },
+      "structuredData": {
+        "score": 90,
+        "passed": true,
+        "details": {
+          "hasSchema": {
+            "value": "4 schema(s)",
+            "passed": true,
+            "points": 5
+          },
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 5
+          },
+          "breadcrumbSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "organizationSchema": {
+            "value": "Missing",
+            "passed": false,
+            "points": 0
+          },
+          "openGraph": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "twitterCard": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "mediaAccessibility": {
+        "score": 60,
+        "passed": false,
+        "details": {
+          "imageAlt": {
+            "value": "71% with alt text",
+            "passed": false,
+            "points": 3
+          },
+          "imageDimensions": {
+            "value": "3% with dimensions",
+            "passed": false,
+            "points": 1
+          },
+          "langAttribute": {
+            "value": "en",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "commerceTrust": {
+        "score": 80,
+        "passed": true,
+        "details": {
+          "shippingInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "returnsPolicy": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "reviews": {
+            "value": "Not found",
+            "passed": false,
+            "points": 0
+          },
+          "legalLinks": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        }
+      }
+    }
+  },
+  "geo": {
+    "score": 684,
+    "maxScore": 800,
+    "band": {
+      "band": "Very Good",
+      "color": "#84cc16",
+      "description": "Well-positioned for AI search"
+    },
+    "pillars": {
+      "aiCrawlAccess": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "httpStatus": {
+            "value": 200,
+            "passed": true,
+            "points": 20
+          },
+          "noindex": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 20
+          },
+          "oaiSearchBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 25
+          },
+          "perplexityBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 20
+          },
+          "snippetControls": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "AI Crawl Access & Snippet Controls"
+      },
+      "productMetadata": {
+        "score": 80,
+        "maxScore": 100,
+        "percentage": 80,
+        "passed": true,
+        "checks": {
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 30
+          },
+          "offerFields": {
+            "value": "Present",
+            "passed": true,
+            "points": 5
+          },
+          "schemaConsistency": {
+            "value": "Checking...",
+            "passed": true,
+            "points": 15
+          },
+          "socialMeta": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "variantHandling": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Product Metadata Readiness"
+      },
+      "entityDisambiguation": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "productIdentity": {
+            "value": "Complete",
+            "passed": true,
+            "points": 25
+          },
+          "productIdentifiers": {
+            "value": "SKU: Yes, MPN: Yes, GTIN: No",
+            "passed": "A0826A20LG",
+            "points": 25
+          },
+          "schemaIdentifiers": {
+            "value": "In schema",
+            "passed": true,
+            "points": 20
+          },
+          "categoryTaxonomy": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "variantIdentifiers": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Entity Disambiguation & Identifiers"
+      },
+      "informationArchitecture": {
+        "score": 90,
+        "maxScore": 100,
+        "percentage": 90,
+        "passed": true,
+        "checks": {
+          "headingHierarchy": {
+            "value": "H1: 4, H2: 3, H3: 30",
+            "passed": false,
+            "points": 15
+          },
+          "bulletLists": {
+            "value": "67 lists, 512 items",
+            "passed": true,
+            "points": 20
+          },
+          "paragraphLength": {
+            "value": "Good",
+            "passed": true,
+            "points": 15
+          },
+          "specTables": {
+            "value": "None",
+            "passed": true,
+            "points": 15
+          },
+          "semanticHTML": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "contentVisible": {
+            "value": "Assumed visible",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "Multiple H1 headings (4)",
+            "impact": 10
+          }
+        ],
+        "recommendations": [],
+        "pillarName": "Machine-Scannable Information Architecture"
+      },
+      "shoppingIntentCoverage": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "useCases": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "compatibility": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "constraints": {
+            "value": "Missing",
+            "passed": true,
+            "points": 5
+          },
+          "whatsIncluded": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "careInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 10
+          },
+          "policies": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "faqContent": {
+            "value": "Present",
+            "passed": true,
+            "points": 20
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Shopping Intent Coverage (Answerability)"
+      },
+      "evidenceCitability": {
+        "score": 63,
+        "maxScore": 100,
+        "percentage": 63,
+        "passed": false,
+        "checks": {
+          "statistics": {
+            "value": "9 stats (0.8 per 200 words)",
+            "passed": false,
+            "points": 13
+          },
+          "sourceCitations": {
+            "value": "None",
+            "passed": false,
+            "points": 0
+          },
+          "definitions": {
+            "value": "1 definition(s)",
+            "passed": true,
+            "points": 20
+          },
+          "authorityCues": {
+            "value": "3 cue(s)",
+            "passed": true,
+            "points": 15
+          },
+          "outboundRefs": {
+            "value": "9 external links",
+            "passed": true,
+            "points": 15
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "No source citations or attributed claims - reduces citability",
+            "impact": 25
+          }
+        ],
+        "recommendations": [
+          "Add citations: \"According to...\", \"Research shows...\", certified/tested by claims"
+        ],
+        "pillarName": "Evidence, Justification & Citability"
+      },
+      "multimodalReadiness": {
+        "score": 81,
+        "maxScore": 100,
+        "percentage": 81,
+        "passed": true,
+        "checks": {
+          "imageCount": {
+            "value": "31 images",
+            "passed": true,
+            "points": 30
+          },
+          "imageAlt": {
+            "value": "71% with alt text",
+            "passed": false,
+            "points": 21
+          },
+          "imageReferences": {
+            "value": "Not referenced",
+            "passed": false,
+            "points": 0
+          },
+          "videoContent": {
+            "value": "Not detected",
+            "passed": true,
+            "points": 5
+          },
+          "imageSchema": {
+            "value": "In schema",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "9 images missing descriptive alt text",
+            "impact": 9
+          },
+          {
+            "severity": "info",
+            "message": "Images not referenced in text content",
+            "impact": 10
+          }
+        ],
+        "recommendations": [
+          "Add descriptive, variant-specific alt text to all images",
+          "Reference images in text (e.g., \"see sizing chart image\")"
+        ],
+        "pillarName": "Multimodal Readiness"
+      },
+      "authoritySignals": {
+        "score": 70,
+        "maxScore": 100,
+        "percentage": 70,
+        "passed": true,
+        "checks": {
+          "sellerIdentity": {
+            "value": "Not identified",
+            "passed": false,
+            "points": 0
+          },
+          "transparentPolicies": {
+            "value": "4/5 policies found",
+            "passed": true,
+            "points": 20
+          },
+          "reviewIntegrity": {
+            "value": "No reviews",
+            "passed": true,
+            "points": 10
+          },
+          "authorityCredentials": {
+            "value": "10 credential(s)",
+            "passed": true,
+            "points": 20
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "offSiteAuthority": {
+            "value": "Not measured (requires external API)",
+            "passed": true,
+            "points": 0
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "No Organization schema - seller identity unclear to AI",
+            "impact": 20
+          },
+          {
+            "severity": "info",
+            "message": "No customer reviews - consider adding review system",
+            "impact": 10
+          }
+        ],
+        "recommendations": [
+          "Add Organization schema with name, logo, and contact info"
+        ],
+        "pillarName": "Authority Signals"
+      }
+    },
+    "issues": [
+      {
+        "pillar": "evidenceCitability",
+        "pillarDisplayName": "Evidence, Justification & Citability",
+        "severity": "warning",
+        "message": "No source citations or attributed claims - reduces citability",
+        "impact": 25
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority Signals",
+        "severity": "warning",
+        "message": "No Organization schema - seller identity unclear to AI",
+        "impact": 20
+      },
+      {
+        "pillar": "informationArchitecture",
+        "pillarDisplayName": "Machine-Scannable Information Architecture",
+        "severity": "warning",
+        "message": "Multiple H1 headings (4)",
+        "impact": 10
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "severity": "warning",
+        "message": "9 images missing descriptive alt text",
+        "impact": 9
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "severity": "info",
+        "message": "Images not referenced in text content",
+        "impact": 10
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority Signals",
+        "severity": "info",
+        "message": "No customer reviews - consider adding review system",
+        "impact": 10
+      }
+    ],
+    "recommendations": [
+      {
+        "pillar": "evidenceCitability",
+        "pillarDisplayName": "Evidence, Justification & Citability",
+        "recommendation": "Add citations: \"According to...\", \"Research shows...\", certified/tested by claims",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority Signals",
+        "recommendation": "Add Organization schema with name, logo, and contact info",
+        "priority": "medium",
+        "potentialImpact": 3
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "recommendation": "Add descriptive, variant-specific alt text to all images",
+        "priority": "low",
+        "potentialImpact": 2
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "recommendation": "Reference images in text (e.g., \"see sizing chart image\")",
+        "priority": "low",
+        "potentialImpact": 2
+      }
+    ],
+    "summary": {
+      "score": 684,
+      "maxScore": 800,
+      "band": "Very Good",
+      "bandColor": "#84cc16",
+      "description": "Well-positioned for AI search",
+      "criticalIssues": 0,
+      "warnings": 4,
+      "message": "Very good GEO optimization. Your content is well-positioned to be cited by AI systems."
+    },
+    "checks": {
+      "aiCrawlAccess": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "AI Crawl Access & Snippet Controls",
+        "details": {
+          "httpStatus": {
+            "value": 200,
+            "passed": true,
+            "points": 20
+          },
+          "noindex": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 20
+          },
+          "oaiSearchBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 25
+          },
+          "perplexityBot": {
+            "value": "Likely allowed",
+            "passed": true,
+            "points": 20
+          },
+          "snippetControls": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "productMetadata": {
+        "score": 80,
+        "maxScore": 100,
+        "percentage": 80,
+        "passed": true,
+        "pillarName": "Product Metadata Readiness",
+        "details": {
+          "productSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 30
+          },
+          "offerFields": {
+            "value": "Present",
+            "passed": true,
+            "points": 5
+          },
+          "schemaConsistency": {
+            "value": "Checking...",
+            "passed": true,
+            "points": 15
+          },
+          "socialMeta": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "variantHandling": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "entityDisambiguation": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "Entity Disambiguation & Identifiers",
+        "details": {
+          "productIdentity": {
+            "value": "Complete",
+            "passed": true,
+            "points": 25
+          },
+          "productIdentifiers": {
+            "value": "SKU: Yes, MPN: Yes, GTIN: No",
+            "passed": "A0826A20LG",
+            "points": 25
+          },
+          "schemaIdentifiers": {
+            "value": "In schema",
+            "passed": true,
+            "points": 20
+          },
+          "categoryTaxonomy": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "variantIdentifiers": {
+            "value": "Has variants",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "informationArchitecture": {
+        "score": 90,
+        "maxScore": 100,
+        "percentage": 90,
+        "passed": true,
+        "pillarName": "Machine-Scannable Information Architecture",
+        "details": {
+          "headingHierarchy": {
+            "value": "H1: 4, H2: 3, H3: 30",
+            "passed": false,
+            "points": 15
+          },
+          "bulletLists": {
+            "value": "67 lists, 512 items",
+            "passed": true,
+            "points": 20
+          },
+          "paragraphLength": {
+            "value": "Good",
+            "passed": true,
+            "points": 15
+          },
+          "specTables": {
+            "value": "None",
+            "passed": true,
+            "points": 15
+          },
+          "semanticHTML": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "contentVisible": {
+            "value": "Assumed visible",
+            "passed": true,
+            "points": 10
+          }
+        }
+      },
+      "shoppingIntentCoverage": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "Shopping Intent Coverage (Answerability)",
+        "details": {
+          "useCases": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "compatibility": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "constraints": {
+            "value": "Missing",
+            "passed": true,
+            "points": 5
+          },
+          "whatsIncluded": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "careInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 10
+          },
+          "policies": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "faqContent": {
+            "value": "Present",
+            "passed": true,
+            "points": 20
+          }
+        }
+      },
+      "evidenceCitability": {
+        "score": 63,
+        "maxScore": 100,
+        "percentage": 63,
+        "passed": false,
+        "pillarName": "Evidence, Justification & Citability",
+        "details": {
+          "statistics": {
+            "value": "9 stats (0.8 per 200 words)",
+            "passed": false,
+            "points": 13
+          },
+          "sourceCitations": {
+            "value": "None",
+            "passed": false,
+            "points": 0
+          },
+          "definitions": {
+            "value": "1 definition(s)",
+            "passed": true,
+            "points": 20
+          },
+          "authorityCues": {
+            "value": "3 cue(s)",
+            "passed": true,
+            "points": 15
+          },
+          "outboundRefs": {
+            "value": "9 external links",
+            "passed": true,
+            "points": 15
+          }
+        }
+      },
+      "multimodalReadiness": {
+        "score": 81,
+        "maxScore": 100,
+        "percentage": 81,
+        "passed": true,
+        "pillarName": "Multimodal Readiness",
+        "details": {
+          "imageCount": {
+            "value": "31 images",
+            "passed": true,
+            "points": 30
+          },
+          "imageAlt": {
+            "value": "71% with alt text",
+            "passed": false,
+            "points": 21
+          },
+          "imageReferences": {
+            "value": "Not referenced",
+            "passed": false,
+            "points": 0
+          },
+          "videoContent": {
+            "value": "Not detected",
+            "passed": true,
+            "points": 5
+          },
+          "imageSchema": {
+            "value": "In schema",
+            "passed": true,
+            "points": 10
+          }
+        }
+      },
+      "authoritySignals": {
+        "score": 70,
+        "maxScore": 100,
+        "percentage": 70,
+        "passed": true,
+        "pillarName": "Authority Signals",
+        "details": {
+          "sellerIdentity": {
+            "value": "Not identified",
+            "passed": false,
+            "points": 0
+          },
+          "transparentPolicies": {
+            "value": "4/5 policies found",
+            "passed": true,
+            "points": 20
+          },
+          "reviewIntegrity": {
+            "value": "No reviews",
+            "passed": true,
+            "points": 10
+          },
+          "authorityCredentials": {
+            "value": "10 credential(s)",
+            "passed": true,
+            "points": 20
+          },
+          "contactInfo": {
+            "value": "Present",
+            "passed": true,
+            "points": 15
+          },
+          "offSiteAuthority": {
+            "value": "Not measured (requires external API)",
+            "passed": true,
+            "points": 0
+          }
+        }
+      }
+    }
+  },
+  "overallScore": {
+    "score": 82,
+    "grade": "A-",
+    "breakdown": {
+      "seo": {
+        "score": 78,
+        "maxScore": 100,
+        "weight": "50%"
+      },
+      "geo": {
+        "score": 684,
+        "maxScore": 800,
+        "normalized": 86,
+        "band": "Very Good",
+        "weight": "50%"
+      }
+    }
+  },
+  "extractedProduct": {
+    "name": "Women's Leopard Print Robe, Knee Length, Satin, Lace Trim",
+    "price": 10,
+    "currency": "USD",
+    "availability": "http://schema.org/InStock",
+    "sku": "A0826A20LG",
+    "gtin": "",
+    "mpn": "197336014587",
+    "brand": "Alexander Del Rossa",
+    "description": "This women's silk like satin robe from Alexander Del Rossa is comfortable, durable, and classy. Made from premium 100% polyester satin fabric, this silky women's lounge robe is cool and easy on the skin. Designed with you in mind, this classic style house coat is perfect for lounging around the house - even when guests are present. Rich in features, we trust that this satin pijama de mujer will not disappoint.",
+    "rating": null,
+    "reviewCount": 0,
+    "variants": [],
+    "hasAddToCart": true,
+    "hasVariants": true
+  }
+}
