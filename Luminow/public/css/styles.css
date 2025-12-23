@@ -133,6 +133,51 @@ body::after {
   box-shadow: var(--shadow-md);
 }
 
+/* Top Logo (Left) */
+.top-logo {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-logo .logo-svg {
+  filter: drop-shadow(0 0 8px rgba(192, 192, 200, 0.3));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.top-logo:hover .logo-svg {
+  filter: drop-shadow(0 0 12px rgba(192, 192, 200, 0.5));
+  transform: rotate(15deg);
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #ffffff, var(--silver));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.logo-subtext {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* Hero Section - Centered Layout */
 .hero {
   min-height: 100vh;

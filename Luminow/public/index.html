@@ -35,6 +35,76 @@
 </head>
 <body>
   <div class="app">
+    <!-- Logo (Top Left) -->
+    <div class="top-logo">
+      <!-- OpenAI-style logo with black hole center -->
+      <svg class="logo-svg" viewBox="0 0 48 48" width="36" height="36">
+        <defs>
+          <!-- Black hole gradient -->
+          <radialGradient id="blackHole" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#000000"/>
+            <stop offset="60%" stop-color="#0a0a0a"/>
+            <stop offset="80%" stop-color="#1a1a2e"/>
+            <stop offset="100%" stop-color="#2d2d44"/>
+          </radialGradient>
+          <!-- Accretion disk glow -->
+          <radialGradient id="accretionGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="40%" stop-color="transparent"/>
+            <stop offset="70%" stop-color="rgba(192, 192, 200, 0.3)"/>
+            <stop offset="85%" stop-color="rgba(192, 192, 200, 0.1)"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+          <!-- Event horizon ring -->
+          <linearGradient id="eventHorizon" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c0c0c8"/>
+            <stop offset="50%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#c0c0c8"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Outer neural network ring (OpenAI style) -->
+        <g stroke="url(#eventHorizon)" stroke-width="1.5" fill="none" opacity="0.9">
+          <!-- Outer hexagon nodes -->
+          <circle cx="24" cy="6" r="3"/>
+          <circle cx="39.6" cy="15" r="3"/>
+          <circle cx="39.6" cy="33" r="3"/>
+          <circle cx="24" cy="42" r="3"/>
+          <circle cx="8.4" cy="33" r="3"/>
+          <circle cx="8.4" cy="15" r="3"/>
+
+          <!-- Neural connections -->
+          <path d="M24 9 L24 16" stroke-width="1.2"/>
+          <path d="M37 16.5 L30 20" stroke-width="1.2"/>
+          <path d="M37 31.5 L30 28" stroke-width="1.2"/>
+          <path d="M24 39 L24 32" stroke-width="1.2"/>
+          <path d="M11 31.5 L18 28" stroke-width="1.2"/>
+          <path d="M11 16.5 L18 20" stroke-width="1.2"/>
+
+          <!-- Cross connections -->
+          <path d="M12 14 L20 20" stroke-width="0.8" opacity="0.5"/>
+          <path d="M36 14 L28 20" stroke-width="0.8" opacity="0.5"/>
+          <path d="M12 34 L20 28" stroke-width="0.8" opacity="0.5"/>
+          <path d="M36 34 L28 28" stroke-width="0.8" opacity="0.5"/>
+        </g>
+
+        <!-- Accretion disk glow -->
+        <ellipse cx="24" cy="24" rx="12" ry="12" fill="url(#accretionGlow)"/>
+
+        <!-- Black hole center -->
+        <circle cx="24" cy="24" r="8" fill="url(#blackHole)"/>
+
+        <!-- Event horizon bright ring -->
+        <circle cx="24" cy="24" r="8" fill="none" stroke="url(#eventHorizon)" stroke-width="1" opacity="0.8"/>
+
+        <!-- Inner glow ring -->
+        <circle cx="24" cy="24" r="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+      </svg>
+      <div class="logo-text-group">
+        <span class="logo-text">Luminow</span>
+        <span class="logo-subtext">by PageRank.AI</span>
+      </div>
+    </div>
+
     <!-- History Icon (Top Right) -->
     <a href="#history" class="history-icon-btn" id="historyLink" title="View History">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
