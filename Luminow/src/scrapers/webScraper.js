@@ -30,27 +30,35 @@ export class WebScraper {
     const startTime = Date.now();
 
     try {
-      // Launch browser using system Chrome for better stability
-      // The bundled Chromium can have socket issues on some systems
-      const chromePath = process.platform === 'darwin'
-        ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-        : undefined; // Use bundled Chrome on other platforms
+      // Launch browser in headless mode for reliability
+      console.log('[Puppeteer] Starting browser launch...');
+      console.log('[Puppeteer] Timestamp:', new Date().toISOString());
+      console.log('[Puppeteer] Checking puppeteer executable path...');
 
-      browser = await puppeteer.launch({
-        headless: 'new',
-        executablePath: chromePath,
+      const launchOptions = {
+        headless: true, // Headless mode
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
           '--disable-gpu',
-          '--disable-software-rasterizer',
         ],
         ignoreHTTPSErrors: true,
-        protocolTimeout: 180000,
-      });
+        timeout: 60000,
+      };
+
+      console.log('[Puppeteer] Launch options:', JSON.stringify(launchOptions, null, 2));
+      console.log('[Puppeteer] Calling puppeteer.launch() now...');
+
+      const launchStart = Date.now();
+      browser = await puppeteer.launch(launchOptions);
+      const launchEnd = Date.now();
+
+      console.log(`[Puppeteer] Browser launched successfully in ${launchEnd - launchStart}ms`);
+      console.log('[Puppeteer] Browser PID:', browser.process()?.pid);
 
       const page = await browser.newPage();
+      console.log('[Puppeteer] New page created');
 
       // Set longer timeouts for complex pages
       page.setDefaultNavigationTimeout(60000);

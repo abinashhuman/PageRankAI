@@ -32,6 +32,14 @@ class LuminowApp {
     this.errorToast = document.getElementById('errorToast');
     this.tabs = document.querySelectorAll('.tab');
     this.tabPanes = document.querySelectorAll('.tab-pane');
+
+    // Mode dropdown elements
+    this.modeDropdown = document.querySelector('.mode-dropdown');
+    this.modeBtn = document.getElementById('modeBtn');
+    this.modeText = document.getElementById('modeText');
+    this.modeDropdownMenu = document.getElementById('modeDropdown');
+    this.modeOptions = document.querySelectorAll('.mode-option');
+    this.currentMode = 'Focused'; // Default mode
   }
 
   bindEvents() {
@@ -60,6 +68,90 @@ class LuminowApp {
         link.classList.add('active');
       });
     });
+
+    // Mode dropdown toggle
+    if (this.modeBtn) {
+      this.modeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.modeDropdown.classList.toggle('open');
+      });
+    }
+
+    // Mode option selection
+    if (this.modeOptions) {
+      this.modeOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const mode = option.dataset.mode;
+          this.selectMode(mode);
+          this.modeDropdown.classList.remove('open');
+        });
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (this.modeDropdown && !this.modeDropdown.contains(e.target)) {
+        this.modeDropdown.classList.remove('open');
+      }
+    });
+  }
+
+  selectMode(mode) {
+    this.currentMode = mode;
+    this.modeText.textContent = mode;
+
+    // Update checkmarks
+    document.getElementById('checkFocused').textContent = mode === 'Focused' ? '✓' : '';
+    document.getElementById('checkMagic').textContent = mode === 'Magic' ? '✓' : '';
+
+    // Trigger golden dust animation when Magic is selected
+    if (mode === 'Magic') {
+      this.createGoldenDust();
+    }
+  }
+
+  createGoldenDust() {
+    const modeBtn = this.modeBtn;
+    const rect = modeBtn.getBoundingClientRect();
+
+    // Create container for dust particles
+    const container = document.createElement('div');
+    container.className = 'golden-dust-container';
+    container.style.position = 'fixed';
+    container.style.left = `${rect.left + rect.width / 2}px`;
+    container.style.top = `${rect.top + rect.height / 2}px`;
+    document.body.appendChild(container);
+
+    // Create multiple dust particles
+    const particleCount = 12;
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+
+      // Alternate between round and star shapes
+      if (i % 3 === 0) {
+        particle.className = 'golden-dust star';
+      } else {
+        particle.className = 'golden-dust';
+      }
+
+      // Random direction for each particle
+      const angle = (i / particleCount) * 360 + Math.random() * 30;
+      const distance = 40 + Math.random() * 60;
+      const tx = Math.cos(angle * Math.PI / 180) * distance;
+      const ty = Math.sin(angle * Math.PI / 180) * distance;
+
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+      particle.style.animationDelay = `${Math.random() * 0.15}s`;
+
+      container.appendChild(particle);
+    }
+
+    // Remove container after animation completes
+    setTimeout(() => {
+      container.remove();
+    }, 1200);
   }
 
   async handleAnalyze(e) {
