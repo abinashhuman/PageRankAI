@@ -1248,4 +1248,59 @@ class LuminowApp {
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new LuminowApp();
+
+  // Rotating text animation for hero subtitle
+  initRotatingText();
 });
+
+/**
+ * Elegant rotating text animation for hero section
+ */
+function initRotatingText() {
+  const textElement = document.getElementById('rotatingText');
+  if (!textElement) return;
+
+  const messages = [
+    'Reach more customers',
+    'Convert more visitors',
+    'Uncover your potential'
+  ];
+
+  let currentIndex = 0;
+  const displayDuration = 2500; // How long each message stays
+  const animationDuration = 600; // Fade transition time
+
+  function rotateText() {
+    currentIndex++;
+
+    // Check if this is the final message
+    if (currentIndex >= messages.length - 1) {
+      // Final message - no fade, just update text and apply color sweep
+      textElement.textContent = messages[messages.length - 1];
+      textElement.classList.add('final');
+      return; // Stop rotating
+    }
+
+    // Fade out current text
+    textElement.classList.add('fade-out');
+
+    setTimeout(() => {
+      // Set new text and prepare fade in
+      textElement.textContent = messages[currentIndex];
+      textElement.classList.remove('fade-out');
+      textElement.classList.add('fade-in');
+
+      // Complete fade in
+      setTimeout(() => {
+        textElement.classList.remove('fade-in');
+
+        // Schedule next rotation
+        setTimeout(rotateText, displayDuration);
+      }, 50);
+
+    }, animationDuration);
+  }
+
+  // Start rotation after initial display
+  setTimeout(rotateText, displayDuration);
+}
