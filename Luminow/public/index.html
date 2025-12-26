@@ -31,74 +31,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <div class="app">
     <!-- Logo (Top Left) -->
     <div class="top-logo">
-      <!-- OpenAI-style logo with black hole center -->
-      <svg class="logo-svg" viewBox="0 0 48 48" width="36" height="36">
-        <defs>
-          <!-- Black hole gradient -->
-          <radialGradient id="blackHole" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#000000"/>
-            <stop offset="60%" stop-color="#0a0a0a"/>
-            <stop offset="80%" stop-color="#1a1a2e"/>
-            <stop offset="100%" stop-color="#2d2d44"/>
-          </radialGradient>
-          <!-- Accretion disk glow -->
-          <radialGradient id="accretionGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="40%" stop-color="transparent"/>
-            <stop offset="70%" stop-color="rgba(192, 192, 200, 0.3)"/>
-            <stop offset="85%" stop-color="rgba(192, 192, 200, 0.1)"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </radialGradient>
-          <!-- Event horizon ring -->
-          <linearGradient id="eventHorizon" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#c0c0c8"/>
-            <stop offset="50%" stop-color="#ffffff"/>
-            <stop offset="100%" stop-color="#c0c0c8"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Outer neural network ring (OpenAI style) -->
-        <g stroke="url(#eventHorizon)" stroke-width="1.5" fill="none" opacity="0.9">
-          <!-- Outer hexagon nodes -->
-          <circle cx="24" cy="6" r="3"/>
-          <circle cx="39.6" cy="15" r="3"/>
-          <circle cx="39.6" cy="33" r="3"/>
-          <circle cx="24" cy="42" r="3"/>
-          <circle cx="8.4" cy="33" r="3"/>
-          <circle cx="8.4" cy="15" r="3"/>
-
-          <!-- Neural connections -->
-          <path d="M24 9 L24 16" stroke-width="1.2"/>
-          <path d="M37 16.5 L30 20" stroke-width="1.2"/>
-          <path d="M37 31.5 L30 28" stroke-width="1.2"/>
-          <path d="M24 39 L24 32" stroke-width="1.2"/>
-          <path d="M11 31.5 L18 28" stroke-width="1.2"/>
-          <path d="M11 16.5 L18 20" stroke-width="1.2"/>
-
-          <!-- Cross connections -->
-          <path d="M12 14 L20 20" stroke-width="0.8" opacity="0.5"/>
-          <path d="M36 14 L28 20" stroke-width="0.8" opacity="0.5"/>
-          <path d="M12 34 L20 28" stroke-width="0.8" opacity="0.5"/>
-          <path d="M36 34 L28 28" stroke-width="0.8" opacity="0.5"/>
-        </g>
-
-        <!-- Accretion disk glow -->
-        <ellipse cx="24" cy="24" rx="12" ry="12" fill="url(#accretionGlow)"/>
-
-        <!-- Black hole center -->
-        <circle cx="24" cy="24" r="8" fill="url(#blackHole)"/>
-
-        <!-- Event horizon bright ring -->
-        <circle cx="24" cy="24" r="8" fill="none" stroke="url(#eventHorizon)" stroke-width="1" opacity="0.8"/>
-
-        <!-- Inner glow ring -->
-        <circle cx="24" cy="24" r="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-      </svg>
+      <img src="/pulsar-icon.svg" alt="Luminow" class="logo-icon">
       <div class="logo-text-group">
         <span class="logo-text">Luminow</span>
         <span class="logo-subtext">by PageRank.AI</span>
@@ -239,6 +179,7 @@
         <!-- Tabs -->
         <div class="tabs">
           <button class="tab active" data-tab="issues">Issues</button>
+          <button class="tab" data-tab="ai-insights">AI Insights</button>
           <button class="tab" data-tab="seo-details">SEO Details</button>
           <button class="tab" data-tab="geo-details">GEO Details</button>
           <button class="tab" data-tab="recommendations">Recommendations</button>
@@ -256,6 +197,93 @@
               <div class="issues-column">
                 <h4><span class="issue-icon geo-icon">G</span> GEO Issues</h4>
                 <div id="geoIssues" class="issues-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Insights Tab (Phase 3 Wow Factor) -->
+          <div class="tab-pane" id="ai-insights">
+            <div class="ai-insights-grid">
+              <!-- Row 1: Radar + What AI Sees -->
+              <div class="insight-row">
+                <!-- AI Visibility Radar -->
+                <div class="insight-card radar-card">
+                  <div class="insight-card-header">
+                    <h3>AI Visibility Radar</h3>
+                    <span class="insight-badge">Live</span>
+                  </div>
+                  <div id="aiRadarContainer" class="ai-radar-container">
+                    <!-- Radar visualization renders here -->
+                  </div>
+                </div>
+
+                <!-- What AI Sees -->
+                <div class="insight-card what-ai-sees-card">
+                  <div id="whatAISeesContainer">
+                    <!-- What AI Sees visualization renders here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 2: E-E-A-T + Freshness -->
+              <div class="insight-row">
+                <!-- E-E-A-T Dashboard -->
+                <div class="insight-card eeat-card">
+                  <div id="eeatContainer">
+                    <!-- E-E-A-T dashboard renders here -->
+                  </div>
+                </div>
+
+                <!-- Freshness Timeline -->
+                <div class="insight-card freshness-card">
+                  <div id="freshnessContainer">
+                    <!-- Freshness timeline renders here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 3: Query Simulation -->
+              <div class="insight-row full-width">
+                <div class="insight-card query-sim-card">
+                  <div class="insight-card-header">
+                    <h3>Query Simulation</h3>
+                    <span class="insight-badge beta">Beta</span>
+                  </div>
+                  <div class="query-sim-container">
+                    <p class="query-sim-desc">Test how AI search engines would respond to queries about your page</p>
+                    <div class="query-sim-input-group">
+                      <input type="text" id="querySimInput" placeholder="e.g., What is the best product for...?" class="query-sim-input">
+                      <button type="button" id="querySimBtn" class="query-sim-btn">
+                        <span>Simulate</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                      </button>
+                    </div>
+                    <div id="querySimResults" class="query-sim-results" style="display: none;">
+                      <!-- Query simulation results render here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 4: LLM Deep Analysis (if enabled) -->
+              <div class="insight-row full-width" id="llmInsightsRow" style="display: none;">
+                <div class="insight-card llm-card">
+                  <div class="insight-card-header">
+                    <h3>Deep AI Analysis</h3>
+                    <span class="insight-badge ai">Powered by AI</span>
+                  </div>
+                  <div id="llmInsightsContainer">
+                    <!-- LLM insights render here -->
+                  </div>
+                  <button type="button" id="runLLMAnalysisBtn" class="llm-analyze-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+                    </svg>
+                    <span>Run Deep Analysis</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -302,6 +330,6 @@
     </div>
   </div>
 
-  <script src="/js/app.js"></script>
+  <script type="module" src="/js/app.js"></script>
 </body>
 </html>

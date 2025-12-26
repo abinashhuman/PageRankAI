@@ -10,6 +10,7 @@
 
 import puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
+import { PageTypeDetector } from '../analyzers/pageTypeDetector.js';
 
 export class WebScraper {
   constructor(options = {}) {
@@ -980,70 +981,117 @@ export class WebScraper {
   }
 
   /**
-   * Detect page type (Product, Category, Article, Homepage, Other)
+   * Detect page type using modular PageTypeDetector
+   * Supports 12+ page types: product, category, article, news, documentation,
+   * saas, localBusiness, portfolio, comparison, directory, landing, homepage
+   *
    * Phase 2, Step 4 of the algorithm
+   *
+   * @param {Object} $ - Cheerio instance
+   * @param {Object} pageData - Optional page data for enhanced detection
+   * @returns {Object} Page type detection result
    */
-  detectPageType($) {
+  detectPageType($, pageData = {}) {
+    // Initialize the detector
+    const detector = new PageTypeDetector();
+
+    // Build page data from Cheerio if not provided
+    const enrichedPageData = {
+      url: pageData.url || $('link[rel="canonical"]').attr('href') || '',
+      textContent: pageData.textContent || $('body').text(),
+      html: $.html(),
+      schemas: pageData.schemaTypes || this.extractSchemaTypes($),
+      ...pageData,
+    };
+
+    // Run detection
+    const detection = detector.detect(enrichedPageData, $);
+
+    // Return result with backwards-compatible fields
+    return {
+      // New comprehensive fields
+      type: detection.type,
+      name: detection.name,
+      description: detection.description,
+      score: detection.score,
+      confidence: detection.confidence / 100, // Normalize to 0-1 for compatibility
+      threshold: detection.threshold,
+      meetsThreshold: detection.meetsThreshold,
+      matches: detection.matches,
+      alternatives: detection.alternatives,
+
+      // Legacy compatibility fields
+      signals: this.convertToLegacySignals(detection),
+      isProductPage: detection.type === 'product',
+
+      // Category helpers
+      isEcommerce: ['product', 'category'].includes(detection.type),
+      isContent: ['article', 'news', 'documentation', 'comparison'].includes(detection.type),
+      isBusiness: ['saas', 'localBusiness', 'portfolio', 'landing'].includes(detection.type),
+    };
+  }
+
+  /**
+   * Extract schema types from page
+   * @param {Object} $ - Cheerio instance
+   * @returns {Array} Schema types found
+   */
+  extractSchemaTypes($) {
+    const types = [];
+    $('script[type="application/ld+json"]').each((_, el) => {
+      try {
+        const content = $(el).html();
+        if (content) {
+          const parsed = JSON.parse(content);
+          if (parsed['@graph']) {
+            parsed['@graph'].forEach(item => {
+              if (item['@type']) types.push({ '@type': item['@type'] });
+            });
+          } else if (parsed['@type']) {
+            types.push({ '@type': parsed['@type'] });
+          }
+        }
+      } catch {
+        // Ignore parse errors
+      }
+    });
+    return types;
+  }
+
+  /**
+   * Convert new detection format to legacy signals format for compatibility
+   * @param {Object} detection - New detection result
+   * @returns {Object} Legacy signals object
+   */
+  convertToLegacySignals(detection) {
     const signals = {
       product: 0,
       category: 0,
       article: 0,
       homepage: 0,
+      // Extended signals
+      news: 0,
+      documentation: 0,
+      saas: 0,
+      localBusiness: 0,
+      portfolio: 0,
+      comparison: 0,
+      directory: 0,
+      landing: 0,
     };
 
-    const url = $('link[rel="canonical"]').attr('href') || '';
-    const html = $.html().toLowerCase();
-
-    // Product signals
-    if (html.includes('schema.org/product') || html.includes('"@type":"product"') || html.includes('"@type": "product"')) signals.product += 30;
-    if ($('[class*="product"]').length > 0) signals.product += 10;
-    if ($('[class*="add-to-cart"], [id*="add-to-cart"]').length > 0) signals.product += 25;
-    if ($('[class*="price"], [data-price]').length > 0) signals.product += 15;
-    if ($('[class*="buy-now"], [class*="checkout"]').length > 0) signals.product += 15;
-    if (html.includes('sku') || html.includes('gtin') || html.includes('mpn')) signals.product += 10;
-
-    // Category signals
-    if ($('[class*="product-list"], [class*="products-grid"], [class*="category"]').length > 0) signals.category += 25;
-    if ($('[class*="product-card"], [class*="product-item"]').length > 3) signals.category += 25;
-    if ($('[class*="filter"], [class*="facet"]').length > 0) signals.category += 15;
-    if (/\/category\/|\/collection\/|\/products\//i.test(url)) signals.category += 20;
-
-    // Article signals
-    if (html.includes('schema.org/article') || html.includes('"@type":"article"') || html.includes('"@type":"blogposting"')) signals.article += 30;
-    if ($('article').length > 0) signals.article += 20;
-    if ($('time[datetime]').length > 0) signals.article += 15;
-    if ($('[class*="author"], [rel="author"]').length > 0) signals.article += 15;
-    if ($('[class*="post"], [class*="blog"], [class*="article"]').length > 0) signals.article += 10;
-
-    // Homepage signals
-    if (url === '/' || url.match(/^https?:\/\/[^\/]+\/?$/)) signals.homepage += 50;
-    if ($('[class*="hero"], [class*="banner"]').length > 0) signals.homepage += 15;
-    if ($('[class*="featured"]').length > 0) signals.homepage += 10;
-
-    // Determine page type
-    const maxSignal = Math.max(signals.product, signals.category, signals.article, signals.homepage);
-    let pageType = 'other';
-    let confidence = 0;
-
-    if (signals.product === maxSignal && signals.product > 30) {
-      pageType = 'product';
-      confidence = Math.min(signals.product / 100, 1);
-    } else if (signals.category === maxSignal && signals.category > 30) {
-      pageType = 'category';
-      confidence = Math.min(signals.category / 100, 1);
-    } else if (signals.article === maxSignal && signals.article > 30) {
-      pageType = 'article';
-      confidence = Math.min(signals.article / 100, 1);
-    } else if (signals.homepage === maxSignal && signals.homepage > 30) {
-      pageType = 'homepage';
-      confidence = Math.min(signals.homepage / 100, 1);
+    // Set the detected type's score
+    if (signals.hasOwnProperty(detection.type)) {
+      signals[detection.type] = detection.score;
     }
 
-    return {
-      type: pageType,
-      confidence,
-      signals,
-      isProductPage: pageType === 'product',
-    };
+    // Add alternative scores
+    for (const alt of detection.alternatives || []) {
+      if (signals.hasOwnProperty(alt.type)) {
+        signals[alt.type] = alt.score;
+      }
+    }
+
+    return signals;
   }
 }
