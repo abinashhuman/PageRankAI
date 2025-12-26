@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -6,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { analyzeRouter } from './routes/analyze.js';
 import { resultsRouter } from './routes/results.js';
+import { llmRouter } from './routes/llm.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,6 +38,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 // API Routes
 app.use('/api/analyze', analyzeRouter);
 app.use('/api/results', resultsRouter);
+app.use('/api/llm', llmRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- 3D Sphere gradient - black core -->
+    <radialGradient id="sphereGradient" cx="35%" cy="35%" r="60%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#404040"/>
+      <stop offset="15%" stop-color="#303030"/>
+      <stop offset="40%" stop-color="#1a1a1a"/>
+      <stop offset="70%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Inner glow - light blue -->
+    <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#87CEEB" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#87CEEB" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#00BFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Corona gradient - light blue -->
+    <radialGradient id="coronaGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#87CEEB" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#00BFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00BFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Beam gradient - light blue horizontal -->
+    <linearGradient id="beamGradientH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#87CEEB" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#B0E0E6" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#87CEEB" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#00BFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Beam gradient - light blue vertical -->
+    <linearGradient id="beamGradientV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00BFFF" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#B0E0E6" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#87CEEB" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#00BFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 3D ring gradient - light blue -->
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B0E0E6" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#87CEEB" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#00BFFF" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 3D Accretion disk - light blue -->
+  <ellipse cx="50" cy="50" rx="28" ry="8" fill="none" stroke="url(#ringGradient)" stroke-width="3" transform="rotate(-15 50 50)" opacity="0.7"/>
+  <ellipse cx="50" cy="50" rx="24" ry="6" fill="none" stroke="#B0E0E6" stroke-width="1.5" transform="rotate(-15 50 50)" opacity="0.5"/>
+
+  <!-- Radiation beams - light blue -->
+  <ellipse cx="50" cy="50" rx="42" ry="4" fill="url(#beamGradientH)" opacity="0.7"/>
+  <ellipse cx="50" cy="50" rx="3" ry="42" fill="url(#beamGradientV)" opacity="0.5"/>
+
+  <!-- Corona / atmosphere - light blue -->
+  <circle cx="50" cy="50" r="18" fill="url(#coronaGradient)"/>
+
+  <!-- Main 3D sphere - BLACK core -->
+  <circle cx="50" cy="50" r="12" fill="url(#sphereGradient)"/>
+  <circle cx="50" cy="50" r="11" fill="none" stroke="#87CEEB" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Subtle highlights on black -->
+  <ellipse cx="45" cy="45" rx="4" ry="3" fill="#404040" opacity="0.5"/>
+
+  <!-- Inner glow layer - light blue around black core -->
+  <circle cx="50" cy="50" r="14" fill="url(#innerGlow)" opacity="0.7"/>
+</svg>

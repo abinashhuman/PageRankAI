@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Core star gradient -->
+    <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#e0f0ff"/>
+      <stop offset="60%" stop-color="#60a0ff"/>
+      <stop offset="100%" stop-color="#2060c0"/>
+    </radialGradient>
+
+    <!-- Beam gradient -->
+    <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#80c0ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#4080ff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Outer glow -->
+    <filter id="outerGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Outer pulse rings -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#4080ff" stroke-width="0.8" opacity="0.2">
+    <animate attributeName="r" values="30;40;30" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50" cy="50" r="25" fill="none" stroke="#60a0ff" stroke-width="0.6" opacity="0.3">
+    <animate attributeName="r" values="20;30;20" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="opacity" values="0.4;0.15;0.4" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+
+  <!-- Radiation beams (pulsar characteristic) -->
+  <g filter="url(#glow)">
+    <!-- Primary beam (top-right) -->
+    <path d="M55 45 L85 15 Q90 10 85 15 L55 45" fill="url(#beamGradient)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <!-- Primary beam (bottom-left) -->
+    <path d="M45 55 L15 85 Q10 90 15 85 L45 55" fill="url(#beamGradient)" opacity="0.8" transform="rotate(180 50 50)">
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Secondary beams -->
+    <line x1="50" y1="50" x2="95" y2="50" stroke="url(#beamGradient)" stroke-width="3" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.2s" repeatCount="indefinite" begin="0.3s"/>
+    </line>
+    <line x1="50" y1="50" x2="5" y2="50" stroke="url(#beamGradient)" stroke-width="3" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.2s" repeatCount="indefinite" begin="0.3s"/>
+    </line>
+
+    <!-- Vertical beams -->
+    <line x1="50" y1="50" x2="50" y2="5" stroke="url(#beamGradient)" stroke-width="2" opacity="0.4" transform="rotate(90 50 50)">
+      <animate attributeName="opacity" values="0.4;0.15;0.4" dur="1s" repeatCount="indefinite" begin="0.6s"/>
+    </line>
+    <line x1="50" y1="50" x2="50" y2="95" stroke="url(#beamGradient)" stroke-width="2" opacity="0.4" transform="rotate(90 50 50)">
+      <animate attributeName="opacity" values="0.4;0.15;0.4" dur="1s" repeatCount="indefinite" begin="0.6s"/>
+    </line>
+  </g>
+
+  <!-- Central pulsar star -->
+  <g filter="url(#outerGlow)">
+    <!-- Outer corona -->
+    <circle cx="50" cy="50" r="12" fill="#4080ff" opacity="0.3">
+      <animate attributeName="r" values="12;15;12" dur="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.15;0.3" dur="1s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Main star body -->
+    <circle cx="50" cy="50" r="8" fill="url(#coreGradient)"/>
+
+    <!-- Bright core -->
+    <circle cx="50" cy="50" r="4" fill="#ffffff" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.6;0.9" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Star sparkle points -->
+    <path d="M50 38 L51 46 L50 42 L49 46 Z" fill="#ffffff" opacity="0.8"/>
+    <path d="M50 62 L51 54 L50 58 L49 54 Z" fill="#ffffff" opacity="0.8"/>
+    <path d="M38 50 L46 51 L42 50 L46 49 Z" fill="#ffffff" opacity="0.8"/>
+    <path d="M62 50 L54 51 L58 50 L54 49 Z" fill="#ffffff" opacity="0.8"/>
+  </g>
+</svg>
