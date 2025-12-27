@@ -1,0 +1,1145 @@
+{
+  "id": "0e5018d9-8e97-476a-b2d9-58aad5ac1df3",
+  "url": "https://www.nilkamalfurniture.com/",
+  "analyzedAt": "2025-12-21T07:59:07.005Z",
+  "pageInfo": {
+    "title": "Home Furniture | Office Furniture | Mattresses | Nilkamal FurnitureVisaMastercardMaestroAmerican ExpressEMI",
+    "url": "https://www.nilkamalfurniture.com/",
+    "finalUrl": "https://www.nilkamalfurniture.com/",
+    "loadTime": 4673,
+    "statusCode": 200,
+    "pageType": {
+      "type": "homepage",
+      "confidence": 0.75,
+      "signals": {
+        "product": 35,
+        "category": 25,
+        "article": 10,
+        "homepage": 75
+      },
+      "isProductPage": false
+    },
+    "wordCount": 3501
+  },
+  "seo": {
+    "score": 78,
+    "categories": {
+      "indexability": {
+        "score": 20,
+        "maxScore": 20,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "statusCode": {
+            "value": 200,
+            "passed": true,
+            "points": 5
+          },
+          "noindex": {
+            "value": false,
+            "passed": true,
+            "points": 5
+          },
+          "canonical": {
+            "value": "https://www.nilkamalfurniture.com/",
+            "passed": true,
+            "points": 3
+          },
+          "redirects": {
+            "value": 1,
+            "passed": true,
+            "points": 2
+          },
+          "hreflang": {
+            "value": "Not set",
+            "passed": true,
+            "points": 1
+          },
+          "internalLinking": {
+            "value": "No breadcrumbs",
+            "passed": true,
+            "points": 3
+          }
+        },
+        "issues": [],
+        "recommendations": []
+      },
+      "pageExperience": {
+        "score": 9,
+        "maxScore": 15,
+        "percentage": 60,
+        "passed": false,
+        "checks": {
+          "loadTime": {
+            "value": "4.67s",
+            "passed": false,
+            "points": 2
+          },
+          "viewport": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "resourceCount": {
+            "value": "67 resources",
+            "passed": false,
+            "points": 0
+          },
+          "htmlSize": {
+            "value": "935KB",
+            "passed": false,
+            "points": 2
+          },
+          "https": {
+            "value": "Secure",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "Slow page load time: 4.67s",
+            "impact": 3
+          },
+          {
+            "severity": "warning",
+            "message": "High resource count: 67 external resources",
+            "impact": 3
+          }
+        ],
+        "recommendations": [
+          "Target page load time under 3 seconds for better user experience",
+          "Reduce HTTP requests by combining and minifying CSS/JS files"
+        ]
+      },
+      "onPageRelevance": {
+        "score": 18,
+        "maxScore": 25,
+        "percentage": 72,
+        "passed": true,
+        "checks": {
+          "title": {
+            "value": "107 chars",
+            "passed": false,
+            "points": 4
+          },
+          "metaDescription": {
+            "value": "162 chars",
+            "passed": false,
+            "points": 3
+          },
+          "h1": {
+            "value": "0 H1 tag(s)",
+            "passed": false,
+            "points": 0
+          },
+          "headingHierarchy": {
+            "value": "H2: 3, H3: 33",
+            "passed": true,
+            "points": 3
+          },
+          "contentLength": {
+            "value": "3501 words",
+            "passed": true,
+            "points": 5
+          },
+          "paragraphStructure": {
+            "value": "99 paragraphs",
+            "passed": true,
+            "points": 3
+          }
+        },
+        "issues": [
+          {
+            "severity": "critical",
+            "message": "Missing H1 heading",
+            "impact": 5
+          }
+        ],
+        "recommendations": [
+          "Add a single H1 heading that describes the main topic"
+        ]
+      },
+      "structuredData": {
+        "score": 20,
+        "maxScore": 20,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "hasSchema": {
+            "value": "2 schema(s)",
+            "passed": true,
+            "points": 5
+          },
+          "productSchema": {
+            "value": "N/A (not product page)",
+            "passed": true,
+            "points": 5
+          },
+          "breadcrumbSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "organizationSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "openGraph": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "twitterCard": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [],
+        "recommendations": []
+      },
+      "mediaAccessibility": {
+        "score": 3,
+        "maxScore": 10,
+        "percentage": 30,
+        "passed": false,
+        "checks": {
+          "imageAlt": {
+            "value": "14% with alt text",
+            "passed": false,
+            "points": 0
+          },
+          "imageDimensions": {
+            "value": "1% with dimensions",
+            "passed": false,
+            "points": 1
+          },
+          "langAttribute": {
+            "value": "en",
+            "passed": true,
+            "points": 2
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "151 of 176 images missing alt text",
+            "impact": 5
+          },
+          {
+            "severity": "info",
+            "message": "175 images missing width/height attributes",
+            "impact": 2
+          }
+        ],
+        "recommendations": [
+          "Add descriptive alt text to all images",
+          "Add width and height attributes to prevent layout shifts"
+        ]
+      },
+      "commerceTrust": {
+        "score": 8,
+        "maxScore": 10,
+        "percentage": 80,
+        "passed": true,
+        "checks": {
+          "notApplicable": {
+            "value": "Non-commerce page",
+            "passed": true,
+            "points": 8
+          }
+        },
+        "issues": [],
+        "recommendations": []
+      }
+    },
+    "issues": [
+      {
+        "category": "onPageRelevance",
+        "severity": "critical",
+        "message": "Missing H1 heading",
+        "impact": 5
+      },
+      {
+        "category": "mediaAccessibility",
+        "severity": "warning",
+        "message": "151 of 176 images missing alt text",
+        "impact": 5
+      },
+      {
+        "category": "pageExperience",
+        "severity": "warning",
+        "message": "Slow page load time: 4.67s",
+        "impact": 3
+      },
+      {
+        "category": "pageExperience",
+        "severity": "warning",
+        "message": "High resource count: 67 external resources",
+        "impact": 3
+      },
+      {
+        "category": "mediaAccessibility",
+        "severity": "info",
+        "message": "175 images missing width/height attributes",
+        "impact": 2
+      }
+    ],
+    "recommendations": [
+      {
+        "category": "mediaAccessibility",
+        "recommendation": "Add descriptive alt text to all images",
+        "priority": "high",
+        "potentialImpact": 7
+      },
+      {
+        "category": "mediaAccessibility",
+        "recommendation": "Add width and height attributes to prevent layout shifts",
+        "priority": "high",
+        "potentialImpact": 7
+      },
+      {
+        "category": "pageExperience",
+        "recommendation": "Target page load time under 3 seconds for better user experience",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "pageExperience",
+        "recommendation": "Reduce HTTP requests by combining and minifying CSS/JS files",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "category": "onPageRelevance",
+        "recommendation": "Add a single H1 heading that describes the main topic",
+        "priority": "medium",
+        "potentialImpact": 3
+      }
+    ],
+    "summary": {
+      "status": "Needs Improvement",
+      "score": 78,
+      "criticalIssues": 1,
+      "warnings": 3,
+      "message": "Your page needs SEO improvements. Found 1 critical issues and 3 warnings."
+    },
+    "checks": {
+      "indexability": {
+        "score": 100,
+        "passed": true,
+        "details": {
+          "statusCode": {
+            "value": 200,
+            "passed": true,
+            "points": 5
+          },
+          "noindex": {
+            "value": false,
+            "passed": true,
+            "points": 5
+          },
+          "canonical": {
+            "value": "https://www.nilkamalfurniture.com/",
+            "passed": true,
+            "points": 3
+          },
+          "redirects": {
+            "value": 1,
+            "passed": true,
+            "points": 2
+          },
+          "hreflang": {
+            "value": "Not set",
+            "passed": true,
+            "points": 1
+          },
+          "internalLinking": {
+            "value": "No breadcrumbs",
+            "passed": true,
+            "points": 3
+          }
+        }
+      },
+      "pageExperience": {
+        "score": 60,
+        "passed": false,
+        "details": {
+          "loadTime": {
+            "value": "4.67s",
+            "passed": false,
+            "points": 2
+          },
+          "viewport": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "resourceCount": {
+            "value": "67 resources",
+            "passed": false,
+            "points": 0
+          },
+          "htmlSize": {
+            "value": "935KB",
+            "passed": false,
+            "points": 2
+          },
+          "https": {
+            "value": "Secure",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "onPageRelevance": {
+        "score": 72,
+        "passed": true,
+        "details": {
+          "title": {
+            "value": "107 chars",
+            "passed": false,
+            "points": 4
+          },
+          "metaDescription": {
+            "value": "162 chars",
+            "passed": false,
+            "points": 3
+          },
+          "h1": {
+            "value": "0 H1 tag(s)",
+            "passed": false,
+            "points": 0
+          },
+          "headingHierarchy": {
+            "value": "H2: 3, H3: 33",
+            "passed": true,
+            "points": 3
+          },
+          "contentLength": {
+            "value": "3501 words",
+            "passed": true,
+            "points": 5
+          },
+          "paragraphStructure": {
+            "value": "99 paragraphs",
+            "passed": true,
+            "points": 3
+          }
+        }
+      },
+      "structuredData": {
+        "score": 100,
+        "passed": true,
+        "details": {
+          "hasSchema": {
+            "value": "2 schema(s)",
+            "passed": true,
+            "points": 5
+          },
+          "productSchema": {
+            "value": "N/A (not product page)",
+            "passed": true,
+            "points": 5
+          },
+          "breadcrumbSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "organizationSchema": {
+            "value": "Present",
+            "passed": true,
+            "points": 3
+          },
+          "openGraph": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          },
+          "twitterCard": {
+            "value": "Present",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "mediaAccessibility": {
+        "score": 30,
+        "passed": false,
+        "details": {
+          "imageAlt": {
+            "value": "14% with alt text",
+            "passed": false,
+            "points": 0
+          },
+          "imageDimensions": {
+            "value": "1% with dimensions",
+            "passed": false,
+            "points": 1
+          },
+          "langAttribute": {
+            "value": "en",
+            "passed": true,
+            "points": 2
+          }
+        }
+      },
+      "commerceTrust": {
+        "score": 80,
+        "passed": true,
+        "details": {
+          "notApplicable": {
+            "value": "Non-commerce page",
+            "passed": true,
+            "points": 8
+          }
+        }
+      }
+    }
+  },
+  "geo": {
+    "score": 527,
+    "maxScore": 800,
+    "rawScore": 659,
+    "gateMultiplier": 1,
+    "pageType": "other",
+    "band": {
+      "band": "Good",
+      "color": "#eab308",
+      "description": "Moderate AI visibility"
+    },
+    "pillars": {
+      "aiCrawlAccess": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "checks": {
+          "httpStatus": {
+            "value": 200,
+            "passed": true,
+            "points": 20
+          },
+          "noindex": {
+            "value": "Indexable",
+            "passed": true,
+            "points": 20
+          },
+          "oaiSearchBot": {
+            "value": "Not blocked",
+            "passed": true,
+            "points": 25
+          },
+          "perplexityBot": {
+            "value": "Not blocked",
+            "passed": true,
+            "points": 15
+          },
+          "claudeBot": {
+            "value": "Not blocked",
+            "passed": true,
+            "points": 10
+          },
+          "snippetControls": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "AI Crawl Access & Snippet Controls"
+      },
+      "productMetadata": {
+        "score": 60,
+        "maxScore": 100,
+        "percentage": 60,
+        "passed": true,
+        "checks": {
+          "notApplicable": {
+            "value": "Non-product page",
+            "passed": true,
+            "points": 60
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Product Metadata Readiness"
+      },
+      "entityDisambiguation": {
+        "score": 25,
+        "maxScore": 100,
+        "percentage": 25,
+        "passed": false,
+        "checks": {
+          "topicClarity": {
+            "value": "Unclear topic",
+            "passed": false,
+            "points": 25
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "Page topic unclear - missing or vague H1",
+            "impact": 35
+          }
+        ],
+        "recommendations": [
+          "Add clear H1 heading that identifies the page topic"
+        ],
+        "pillarName": "Entity Disambiguation & Identifiers"
+      },
+      "informationArchitecture": {
+        "score": 75,
+        "maxScore": 100,
+        "percentage": 75,
+        "passed": true,
+        "checks": {
+          "headingHierarchy": {
+            "value": "H1: 0, H2: 3, H3: 33",
+            "passed": true,
+            "points": 15
+          },
+          "bulletLists": {
+            "value": "396 lists, 7305 items",
+            "passed": true,
+            "points": 20
+          },
+          "paragraphLength": {
+            "value": "Avg: 10 words, 0 long",
+            "passed": true,
+            "points": 20
+          },
+          "specTables": {
+            "value": "1 table(s)",
+            "passed": true,
+            "points": 10
+          },
+          "semanticHTML": {
+            "value": "main: ✗, article: ✗, section: ✓",
+            "passed": true,
+            "points": 5
+          },
+          "contentDensity": {
+            "value": "2.3 facts/100 words",
+            "passed": false,
+            "points": 5
+          }
+        },
+        "issues": [
+          {
+            "severity": "critical",
+            "message": "Missing H1",
+            "impact": 10
+          }
+        ],
+        "recommendations": [],
+        "pillarName": "Machine-Scannable Information Architecture"
+      },
+      "answerability": {
+        "score": 50,
+        "maxScore": 100,
+        "percentage": 50,
+        "passed": true,
+        "checks": {
+          "generalContent": {
+            "value": "Substantial content",
+            "passed": true,
+            "points": 50
+          }
+        },
+        "issues": [],
+        "recommendations": [],
+        "pillarName": "Answerability & Query Coverage"
+      },
+      "evidenceCitability": {
+        "score": 70,
+        "maxScore": 100,
+        "percentage": 70,
+        "passed": true,
+        "checks": {
+          "statistics": {
+            "value": "80 stats (2.3/100 words)",
+            "passed": true,
+            "points": 35
+          },
+          "sourceCitations": {
+            "value": "None found",
+            "passed": false,
+            "points": 0
+          },
+          "definitions": {
+            "value": "4 explanation(s)",
+            "passed": true,
+            "points": 15
+          },
+          "authorityCues": {
+            "value": "10 cue(s)",
+            "passed": true,
+            "points": 10
+          },
+          "outboundRefs": {
+            "value": "29 external link(s)",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "message": "No source citations - claims not externally validated",
+            "impact": 30
+          }
+        ],
+        "recommendations": [
+          "Add citations: \"According to...\", \"Certified by...\", \"Research shows...\""
+        ],
+        "pillarName": "Evidence, Justification & Citability"
+      },
+      "multimodalReadiness": {
+        "score": 53,
+        "maxScore": 100,
+        "percentage": 53,
+        "passed": false,
+        "checks": {
+          "imageCount": {
+            "value": "176 image(s)",
+            "passed": true,
+            "points": 30
+          },
+          "imageAlt": {
+            "value": "14% with alt text",
+            "passed": false,
+            "points": 8
+          },
+          "imageReferences": {
+            "value": "Not referenced",
+            "passed": false,
+            "points": 5
+          },
+          "videoContent": {
+            "value": "No video",
+            "passed": true,
+            "points": 5
+          },
+          "imageSchema": {
+            "value": "Not in schema",
+            "passed": true,
+            "points": 5
+          }
+        },
+        "issues": [
+          {
+            "severity": "critical",
+            "message": "151 image(s) missing alt text",
+            "impact": 22
+          },
+          {
+            "severity": "info",
+            "message": "Images not referenced in text - disconnect between visual and text",
+            "impact": 10
+          }
+        ],
+        "recommendations": [
+          "Add descriptive, specific alt text to all product images",
+          "Reference images in text: \"See image for size comparison\""
+        ],
+        "pillarName": "Multimodal Readiness"
+      },
+      "authoritySignals": {
+        "score": 68,
+        "maxScore": 100,
+        "percentage": 68,
+        "passed": false,
+        "checks": {
+          "sellerIdentity": {
+            "value": "Organization schema present",
+            "passed": true,
+            "points": 15
+          },
+          "transparentPolicies": {
+            "value": "5/5 policies found",
+            "passed": true,
+            "points": 20
+          },
+          "reviewIntegrity": {
+            "value": "No reviews",
+            "passed": false,
+            "points": 5
+          },
+          "authorityCredentials": {
+            "value": "None found",
+            "passed": false,
+            "points": 3
+          },
+          "contactInfo": {
+            "value": "Contact info present",
+            "passed": true,
+            "points": 15
+          },
+          "contentFreshness": {
+            "value": "Date found",
+            "passed": true,
+            "points": 10
+          }
+        },
+        "issues": [
+          {
+            "severity": "info",
+            "message": "No authority credentials detected",
+            "impact": 12
+          }
+        ],
+        "recommendations": [
+          "Add certifications, awards, years in business, or customer counts"
+        ],
+        "pillarName": "Authority & Trust Signals"
+      }
+    },
+    "issues": [
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "severity": "critical",
+        "message": "151 image(s) missing alt text",
+        "impact": 22
+      },
+      {
+        "pillar": "informationArchitecture",
+        "pillarDisplayName": "Machine-Scannable Information Architecture",
+        "severity": "critical",
+        "message": "Missing H1",
+        "impact": 10
+      },
+      {
+        "pillar": "entityDisambiguation",
+        "pillarDisplayName": "Entity Disambiguation & Identifiers",
+        "severity": "warning",
+        "message": "Page topic unclear - missing or vague H1",
+        "impact": 35
+      },
+      {
+        "pillar": "evidenceCitability",
+        "pillarDisplayName": "Evidence, Justification & Citability",
+        "severity": "warning",
+        "message": "No source citations - claims not externally validated",
+        "impact": 30
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority & Trust Signals",
+        "severity": "info",
+        "message": "No authority credentials detected",
+        "impact": 12
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "severity": "info",
+        "message": "Images not referenced in text - disconnect between visual and text",
+        "impact": 10
+      }
+    ],
+    "recommendations": [
+      {
+        "pillar": "entityDisambiguation",
+        "pillarDisplayName": "Entity Disambiguation & Identifiers",
+        "recommendation": "Add clear H1 heading that identifies the page topic",
+        "priority": "high",
+        "potentialImpact": 6
+      },
+      {
+        "pillar": "evidenceCitability",
+        "pillarDisplayName": "Evidence, Justification & Citability",
+        "recommendation": "Add citations: \"According to...\", \"Certified by...\", \"Research shows...\"",
+        "priority": "medium",
+        "potentialImpact": 5
+      },
+      {
+        "pillar": "authoritySignals",
+        "pillarDisplayName": "Authority & Trust Signals",
+        "recommendation": "Add certifications, awards, years in business, or customer counts",
+        "priority": "medium",
+        "potentialImpact": 5
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "recommendation": "Add descriptive, specific alt text to all product images",
+        "priority": "medium",
+        "potentialImpact": 4
+      },
+      {
+        "pillar": "multimodalReadiness",
+        "pillarDisplayName": "Multimodal Readiness",
+        "recommendation": "Reference images in text: \"See image for size comparison\"",
+        "priority": "medium",
+        "potentialImpact": 4
+      }
+    ],
+    "summary": {
+      "score": 527,
+      "maxScore": 800,
+      "band": "Good",
+      "bandColor": "#eab308",
+      "description": "Moderate AI visibility",
+      "gateMultiplier": 1,
+      "criticalIssues": 2,
+      "warnings": 2,
+      "message": "Good foundation. Address 2 critical issues to improve AI citation likelihood."
+    },
+    "checks": {
+      "aiCrawlAccess": {
+        "score": 100,
+        "maxScore": 100,
+        "percentage": 100,
+        "passed": true,
+        "pillarName": "AI Crawl Access & Snippet Controls",
+        "details": {
+          "httpStatus": {
+            "value": 200,
+            "passed": true,
+            "points": 20
+          },
+          "noindex": {
+            "value": "Indexable",
+            "passed": true,
+            "points": 20
+          },
+          "oaiSearchBot": {
+            "value": "Not blocked",
+            "passed": true,
+            "points": 25
+          },
+          "perplexityBot": {
+            "value": "Not blocked",
+            "passed": true,
+            "points": 15
+          },
+          "claudeBot": {
+            "value": "Not blocked",
+            "passed": true,
+            "points": 10
+          },
+          "snippetControls": {
+            "value": "Allowed",
+            "passed": true,
+            "points": 10
+          }
+        }
+      },
+      "productMetadata": {
+        "score": 60,
+        "maxScore": 100,
+        "percentage": 60,
+        "passed": true,
+        "pillarName": "Product Metadata Readiness",
+        "details": {
+          "notApplicable": {
+            "value": "Non-product page",
+            "passed": true,
+            "points": 60
+          }
+        }
+      },
+      "entityDisambiguation": {
+        "score": 25,
+        "maxScore": 100,
+        "percentage": 25,
+        "passed": false,
+        "pillarName": "Entity Disambiguation & Identifiers",
+        "details": {
+          "topicClarity": {
+            "value": "Unclear topic",
+            "passed": false,
+            "points": 25
+          }
+        }
+      },
+      "informationArchitecture": {
+        "score": 75,
+        "maxScore": 100,
+        "percentage": 75,
+        "passed": true,
+        "pillarName": "Machine-Scannable Information Architecture",
+        "details": {
+          "headingHierarchy": {
+            "value": "H1: 0, H2: 3, H3: 33",
+            "passed": true,
+            "points": 15
+          },
+          "bulletLists": {
+            "value": "396 lists, 7305 items",
+            "passed": true,
+            "points": 20
+          },
+          "paragraphLength": {
+            "value": "Avg: 10 words, 0 long",
+            "passed": true,
+            "points": 20
+          },
+          "specTables": {
+            "value": "1 table(s)",
+            "passed": true,
+            "points": 10
+          },
+          "semanticHTML": {
+            "value": "main: ✗, article: ✗, section: ✓",
+            "passed": true,
+            "points": 5
+          },
+          "contentDensity": {
+            "value": "2.3 facts/100 words",
+            "passed": false,
+            "points": 5
+          }
+        }
+      },
+      "answerability": {
+        "score": 50,
+        "maxScore": 100,
+        "percentage": 50,
+        "passed": true,
+        "pillarName": "Answerability & Query Coverage",
+        "details": {
+          "generalContent": {
+            "value": "Substantial content",
+            "passed": true,
+            "points": 50
+          }
+        }
+      },
+      "evidenceCitability": {
+        "score": 70,
+        "maxScore": 100,
+        "percentage": 70,
+        "passed": true,
+        "pillarName": "Evidence, Justification & Citability",
+        "details": {
+          "statistics": {
+            "value": "80 stats (2.3/100 words)",
+            "passed": true,
+            "points": 35
+          },
+          "sourceCitations": {
+            "value": "None found",
+            "passed": false,
+            "points": 0
+          },
+          "definitions": {
+            "value": "4 explanation(s)",
+            "passed": true,
+            "points": 15
+          },
+          "authorityCues": {
+            "value": "10 cue(s)",
+            "passed": true,
+            "points": 10
+          },
+          "outboundRefs": {
+            "value": "29 external link(s)",
+            "passed": true,
+            "points": 10
+          }
+        }
+      },
+      "multimodalReadiness": {
+        "score": 53,
+        "maxScore": 100,
+        "percentage": 53,
+        "passed": false,
+        "pillarName": "Multimodal Readiness",
+        "details": {
+          "imageCount": {
+            "value": "176 image(s)",
+            "passed": true,
+            "points": 30
+          },
+          "imageAlt": {
+            "value": "14% with alt text",
+            "passed": false,
+            "points": 8
+          },
+          "imageReferences": {
+            "value": "Not referenced",
+            "passed": false,
+            "points": 5
+          },
+          "videoContent": {
+            "value": "No video",
+            "passed": true,
+            "points": 5
+          },
+          "imageSchema": {
+            "value": "Not in schema",
+            "passed": true,
+            "points": 5
+          }
+        }
+      },
+      "authoritySignals": {
+        "score": 68,
+        "maxScore": 100,
+        "percentage": 68,
+        "passed": false,
+        "pillarName": "Authority & Trust Signals",
+        "details": {
+          "sellerIdentity": {
+            "value": "Organization schema present",
+            "passed": true,
+            "points": 15
+          },
+          "transparentPolicies": {
+            "value": "5/5 policies found",
+            "passed": true,
+            "points": 20
+          },
+          "reviewIntegrity": {
+            "value": "No reviews",
+            "passed": false,
+            "points": 5
+          },
+          "authorityCredentials": {
+            "value": "None found",
+            "passed": false,
+            "points": 3
+          },
+          "contactInfo": {
+            "value": "Contact info present",
+            "passed": true,
+            "points": 15
+          },
+          "contentFreshness": {
+            "value": "Date found",
+            "passed": true,
+            "points": 10
+          }
+        }
+      }
+    }
+  },
+  "overallScore": {
+    "score": 72,
+    "grade": "B",
+    "breakdown": {
+      "seo": {
+        "score": 78,
+        "maxScore": 100,
+        "weight": "50%"
+      },
+      "geo": {
+        "score": 527,
+        "maxScore": 800,
+        "normalized": 66,
+        "band": "Good",
+        "weight": "50%"
+      }
+    }
+  },
+  "extractedProduct": null
+}

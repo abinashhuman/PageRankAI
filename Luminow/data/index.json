@@ -1,6 +1,30 @@
 {
   "results": [
     {
+      "id": "97b254a3-90d4-46d0-930d-0150e7218da7",
+      "url": "https://www.nilkamalfurniture.com/collections/dining-tables",
+      "analyzedAt": "2025-12-21T08:00:21.836Z",
+      "overallScore": 70,
+      "seoScore": 77,
+      "geoScore": 498
+    },
+    {
+      "id": "0e5018d9-8e97-476a-b2d9-58aad5ac1df3",
+      "url": "https://www.nilkamalfurniture.com/",
+      "analyzedAt": "2025-12-21T07:59:07.005Z",
+      "overallScore": 72,
+      "seoScore": 78,
+      "geoScore": 527
+    },
+    {
+      "id": "24633e6b-35bd-47c5-af5c-2b2ee3f2253c",
+      "url": "https://bb-gpt.vercel.app/",
+      "analyzedAt": "2025-12-21T07:56:27.898Z",
+      "overallScore": 59,
+      "seoScore": 70,
+      "geoScore": 380
+    },
+    {
       "id": "650bb4f2-4a84-44eb-b749-7a699de01aca",
       "url": "https://thewholetruthfoods.com/products/hazelnut-cocoa-pro-box-of-5?sku_id=38766089&category=protein-bars-pro",
       "analyzedAt": "2025-12-26T23:11:44.705Z",
