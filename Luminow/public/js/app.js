@@ -80,6 +80,16 @@ class LuminowApp {
   bindEvents() {
     this.form.addEventListener('submit', (e) => this.handleAnalyze(e));
 
+    // Custom validation tooltip for URL input
+    this.urlInput.addEventListener('invalid', (e) => {
+      e.preventDefault();
+      this.showCustomTooltip();
+    });
+
+    this.urlInput.addEventListener('input', () => {
+      this.hideCustomTooltip();
+    });
+
     // Tab navigation
     this.tabs.forEach(tab => {
       tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
@@ -205,6 +215,38 @@ class LuminowApp {
     setTimeout(() => {
       container.remove();
     }, 1200);
+  }
+
+  showCustomTooltip() {
+    // Remove existing tooltip if any
+    this.hideCustomTooltip();
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'custom-validation-tooltip';
+    tooltip.innerHTML = `
+      <span class="tooltip-emoji">🤔</span>
+      <span class="tooltip-message">I'm smart but can't yet read your mind... please share your URL</span>
+    `;
+
+    // Position tooltip below input
+    const inputRect = this.urlInput.getBoundingClientRect();
+    tooltip.style.position = 'fixed';
+    tooltip.style.left = `${inputRect.left + inputRect.width / 2}px`;
+    tooltip.style.top = `${inputRect.bottom + 10}px`;
+    tooltip.style.transform = 'translateX(-50%)';
+
+    document.body.appendChild(tooltip);
+    this.customTooltip = tooltip;
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => this.hideCustomTooltip(), 4000);
+  }
+
+  hideCustomTooltip() {
+    if (this.customTooltip) {
+      this.customTooltip.remove();
+      this.customTooltip = null;
+    }
   }
 
   async handleAnalyze(e) {
