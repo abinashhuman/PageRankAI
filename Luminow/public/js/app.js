@@ -163,7 +163,6 @@ class LuminowApp {
   selectMode(mode) {
     this.currentMode = mode;
     this.modeText.textContent = mode;
-    console.log(`[Mode] Switched to ${mode}`);
 
     // Update checkmarks
     document.getElementById('checkFocused').textContent = mode === 'Focused' ? '✓' : '';
@@ -171,7 +170,6 @@ class LuminowApp {
 
     // Trigger golden dust animation when Magic is selected
     if (mode === 'Magic') {
-      console.log('[Magic] Magic mode selected, triggering golden dust.');
       this.createGoldenDust();
     }
   }
@@ -324,14 +322,10 @@ class LuminowApp {
     // Show LLM row if Magic mode is enabled
     if (this.llmInsightsRow) {
       this.llmInsightsRow.style.display = this.currentMode === 'Magic' ? 'block' : 'none';
-      console.log(`[Magic] LLM insights row ${this.currentMode === 'Magic' ? 'shown' : 'hidden'} based on current mode.`);
     }
 
     // Reset to issues tab
     this.switchTab('issues');
-
-    // Bring results into view after rendering
-    this.scrollToResults();
   }
 
   /**
@@ -1211,19 +1205,6 @@ class LuminowApp {
     this.resultsSection.style.display = 'none';
     this.historySection.style.display = 'block';
     this.loadHistory();
-  }
-
-  scrollToResults() {
-    if (!this.resultsSection) return;
-
-    const scrollAction = () => {
-      const { top } = this.resultsSection.getBoundingClientRect();
-      const target = top + window.pageYOffset - 12; // slight offset for breathing room
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    };
-
-    // Defer slightly so layout and overlay changes finish before scrolling
-    requestAnimationFrame(() => setTimeout(scrollAction, 100));
   }
 
   showLoading() {
