@@ -1,21 +1,49 @@
 /**
  * Luminow - SEO & GEO Analysis Tool
- * Frontend Application
+ * Frontend Application v3.0
  *
  * SEO Score: 0-100 (traditional scale)
  * GEO Score: 0-800 (credit score style with bands)
+ *
+ * Phase 3 Features:
+ * - AI Visibility Radar
+ * - What AI Sees visualization
+ * - E-E-A-T Dashboard
+ * - Freshness Timeline
+ * - Query Simulation
+ * - LLM Deep Analysis
  */
+
+import {
+  AIVisibilityRadar,
+  WhatAISeesView,
+  EEATDashboard,
+  FreshnessTimeline,
+} from './visualizations.js';
 
 class LuminowApp {
   constructor() {
     this.currentResults = null;
+    this.currentMode = 'Focused';
+    this.isLLMAnalysisRunning = false;
     this.init();
+    this.initVisualizations();
   }
 
   init() {
     this.bindElements();
     this.bindEvents();
     this.loadHistory();
+  }
+
+  /**
+   * Initialize visualization components
+   */
+  initVisualizations() {
+    this.aiRadar = new AIVisibilityRadar('aiRadarContainer');
+    this.whatAISees = new WhatAISeesView('whatAISeesContainer');
+    this.eeatDashboard = new EEATDashboard('eeatContainer');
+    this.freshnessTimeline = new FreshnessTimeline('freshnessContainer');
   }
 
   bindElements() {
@@ -32,10 +60,35 @@ class LuminowApp {
     this.errorToast = document.getElementById('errorToast');
     this.tabs = document.querySelectorAll('.tab');
     this.tabPanes = document.querySelectorAll('.tab-pane');
+
+    // Mode dropdown elements
+    this.modeDropdown = document.querySelector('.mode-dropdown');
+    this.modeBtn = document.getElementById('modeBtn');
+    this.modeText = document.getElementById('modeText');
+    this.modeDropdownMenu = document.getElementById('modeDropdown');
+    this.modeOptions = document.querySelectorAll('.mode-option');
+
+    // Phase 3: AI Insights elements
+    this.querySimInput = document.getElementById('querySimInput');
+    this.querySimBtn = document.getElementById('querySimBtn');
+    this.querySimResults = document.getElementById('querySimResults');
+    this.llmInsightsRow = document.getElementById('llmInsightsRow');
+    this.llmInsightsContainer = document.getElementById('llmInsightsContainer');
+    this.runLLMAnalysisBtn = document.getElementById('runLLMAnalysisBtn');
   }
 
   bindEvents() {
     this.form.addEventListener('submit', (e) => this.handleAnalyze(e));
+
+    // Custom validation tooltip for URL input
+    this.urlInput.addEventListener('invalid', (e) => {
+      e.preventDefault();
+      this.showCustomTooltip();
+    });
+
+    this.urlInput.addEventListener('input', () => {
+      this.hideCustomTooltip();
+    });
 
     // Tab navigation
     this.tabs.forEach(tab => {
@@ -60,6 +113,140 @@ class LuminowApp {
         link.classList.add('active');
       });
     });
+
+    // Mode dropdown toggle
+    if (this.modeBtn) {
+      this.modeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.modeDropdown.classList.toggle('open');
+      });
+    }
+
+    // Mode option selection
+    if (this.modeOptions) {
+      this.modeOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const mode = option.dataset.mode;
+          this.selectMode(mode);
+          this.modeDropdown.classList.remove('open');
+        });
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (this.modeDropdown && !this.modeDropdown.contains(e.target)) {
+        this.modeDropdown.classList.remove('open');
+      }
+    });
+
+    // Phase 3: Query Simulation
+    if (this.querySimBtn) {
+      this.querySimBtn.addEventListener('click', () => this.handleQuerySimulation());
+    }
+    if (this.querySimInput) {
+      this.querySimInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.handleQuerySimulation();
+        }
+      });
+    }
+
+    // Phase 3: LLM Deep Analysis
+    if (this.runLLMAnalysisBtn) {
+      this.runLLMAnalysisBtn.addEventListener('click', () => this.handleLLMAnalysis());
+    }
+  }
+
+  selectMode(mode) {
+    this.currentMode = mode;
+    this.modeText.textContent = mode;
+
+    // Update checkmarks
+    document.getElementById('checkFocused').textContent = mode === 'Focused' ? '✓' : '';
+    document.getElementById('checkMagic').textContent = mode === 'Magic' ? '✓' : '';
+
+    // Trigger golden dust animation when Magic is selected
+    if (mode === 'Magic') {
+      this.createGoldenDust();
+    }
+  }
+
+  createGoldenDust() {
+    const modeBtn = this.modeBtn;
+    const rect = modeBtn.getBoundingClientRect();
+
+    // Create container for dust particles
+    const container = document.createElement('div');
+    container.className = 'golden-dust-container';
+    container.style.position = 'fixed';
+    container.style.left = `${rect.left + rect.width / 2}px`;
+    container.style.top = `${rect.top + rect.height / 2}px`;
+    document.body.appendChild(container);
+
+    // Create multiple dust particles
+    const particleCount = 12;
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+
+      // Alternate between round and star shapes
+      if (i % 3 === 0) {
+        particle.className = 'golden-dust star';
+      } else {
+        particle.className = 'golden-dust';
+      }
+
+      // Random direction for each particle
+      const angle = (i / particleCount) * 360 + Math.random() * 30;
+      const distance = 40 + Math.random() * 60;
+      const tx = Math.cos(angle * Math.PI / 180) * distance;
+      const ty = Math.sin(angle * Math.PI / 180) * distance;
+
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+      particle.style.animationDelay = `${Math.random() * 0.15}s`;
+
+      container.appendChild(particle);
+    }
+
+    // Remove container after animation completes
+    setTimeout(() => {
+      container.remove();
+    }, 1200);
+  }
+
+  showCustomTooltip() {
+    // Remove existing tooltip if any
+    this.hideCustomTooltip();
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'custom-validation-tooltip';
+    tooltip.innerHTML = `
+      <span class="tooltip-emoji">🤔</span>
+      <span class="tooltip-message">I'm smart but can't yet read your mind... please share your URL</span>
+    `;
+
+    // Position tooltip below input
+    const inputRect = this.urlInput.getBoundingClientRect();
+    tooltip.style.position = 'fixed';
+    tooltip.style.left = `${inputRect.left + inputRect.width / 2}px`;
+    tooltip.style.top = `${inputRect.bottom + 10}px`;
+    tooltip.style.transform = 'translateX(-50%)';
+
+    document.body.appendChild(tooltip);
+    this.customTooltip = tooltip;
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => this.hideCustomTooltip(), 4000);
+  }
+
+  hideCustomTooltip() {
+    if (this.customTooltip) {
+      this.customTooltip.remove();
+      this.customTooltip = null;
+    }
   }
 
   async handleAnalyze(e) {
@@ -129,8 +316,347 @@ class LuminowApp {
     // Display recommendations
     this.displayRecommendations(results);
 
+    // Phase 3: Display AI Insights visualizations
+    this.displayAIInsights(results);
+
+    // Show LLM row if Magic mode is enabled
+    if (this.llmInsightsRow) {
+      this.llmInsightsRow.style.display = this.currentMode === 'Magic' ? 'block' : 'none';
+    }
+
     // Reset to issues tab
     this.switchTab('issues');
+  }
+
+  /**
+   * Phase 3: Display AI Insights visualizations
+   */
+  displayAIInsights(results) {
+    if (!results) return;
+
+    // Prepare data for visualizations
+    const geoResults = results.geo || {};
+    const crawlAccess = geoResults.crawlAccess || {};
+    const contentAnalysis = results.contentAnalysis || this.extractContentAnalysis(results);
+    const eeatData = this.extractEEATData(results);
+    const freshnessData = contentAnalysis.freshness || this.extractFreshnessData(results);
+
+    // Render AI Visibility Radar
+    if (this.aiRadar) {
+      this.aiRadar.render(geoResults, crawlAccess);
+    }
+
+    // Render What AI Sees
+    if (this.whatAISees) {
+      this.whatAISees.render(contentAnalysis);
+    }
+
+    // Render E-E-A-T Dashboard
+    if (this.eeatDashboard) {
+      this.eeatDashboard.render(eeatData);
+    }
+
+    // Render Freshness Timeline
+    if (this.freshnessTimeline) {
+      this.freshnessTimeline.render(freshnessData);
+    }
+  }
+
+  /**
+   * Extract content analysis data from results
+   */
+  extractContentAnalysis(results) {
+    const geo = results.geo || {};
+    const pillars = geo.pillars || {};
+
+    // Extract quotable sentences from content
+    const quotableSentences = [];
+    const uncitableContent = [];
+
+    // Get word count and depth info
+    const infoArchPillar = pillars.machineScannableInfoArch || pillars.informationArchitecture || {};
+    const citabilityPillar = pillars.evidenceJustificationCitability || pillars.citability || {};
+
+    const wordCount = infoArchPillar.checks?.contentDepth?.value || 0;
+    let depthStatus = 'thin';
+    if (wordCount >= 2000) depthStatus = 'comprehensive';
+    else if (wordCount >= 1500) depthStatus = 'thorough';
+    else if (wordCount >= 1000) depthStatus = 'substantial';
+    else if (wordCount >= 500) depthStatus = 'moderate';
+
+    // Extract freshness data
+    const freshnessPillar = pillars.evidenceJustificationCitability || {};
+    const freshnessCheck = freshnessPillar.checks?.contentFreshness || {};
+
+    return {
+      depth: {
+        wordCount: typeof wordCount === 'string' ? parseInt(wordCount) : wordCount,
+        status: depthStatus,
+      },
+      quotableSentences,
+      uncitableContent,
+      freshness: {
+        daysSinceUpdate: freshnessCheck.daysOld || null,
+        status: freshnessCheck.passed ? 'fresh' : 'stale',
+        isWithin30Days: freshnessCheck.passed || false,
+        isWithin90Days: freshnessCheck.daysOld ? freshnessCheck.daysOld <= 90 : false,
+      },
+    };
+  }
+
+  /**
+   * Extract E-E-A-T data from results
+   */
+  extractEEATData(results) {
+    const geo = results.geo || {};
+    const pillars = geo.pillars || {};
+
+    // Map GEO pillars to E-E-A-T dimensions
+    const authorityPillar = pillars.authoritySignals || {};
+    const citabilityPillar = pillars.evidenceJustificationCitability || {};
+    const metadataPillar = pillars.productMetadataReadiness || {};
+
+    return {
+      experience: {
+        count: this.countPassedChecks(citabilityPillar.checks),
+        signals: this.extractSignals(citabilityPillar.checks, ['useCases', 'whatsIncluded', 'careInfo']),
+      },
+      expertise: {
+        count: this.countPassedChecks(metadataPillar.checks),
+        signals: this.extractSignals(metadataPillar.checks, ['productSchema', 'specifications', 'productIdentifiers']),
+      },
+      authority: {
+        count: this.countPassedChecks(authorityPillar.checks),
+        signals: this.extractSignals(authorityPillar.checks, ['sellerIdentity', 'authorityCredentials', 'offSiteAuthority']),
+      },
+      trust: {
+        count: this.countPassedChecks(authorityPillar.checks, ['transparentPolicies', 'reviewIntegrity', 'contactInfo']),
+        signals: this.extractSignals(authorityPillar.checks, ['transparentPolicies', 'reviewIntegrity', 'contactInfo']),
+      },
+    };
+  }
+
+  countPassedChecks(checks, filterKeys = null) {
+    if (!checks) return 0;
+    let count = 0;
+    const keys = filterKeys || Object.keys(checks);
+    keys.forEach(key => {
+      if (checks[key]?.passed) count++;
+    });
+    return count;
+  }
+
+  extractSignals(checks, keys) {
+    if (!checks) return [];
+    return keys
+      .filter(key => checks[key]?.passed)
+      .map(key => ({ name: this.formatCategory(key) }));
+  }
+
+  /**
+   * Extract freshness data from results
+   */
+  extractFreshnessData(results) {
+    const geo = results.geo || {};
+    const pillars = geo.pillars || {};
+    const citabilityPillar = pillars.evidenceJustificationCitability || {};
+    const freshnessCheck = citabilityPillar.checks?.contentFreshness || {};
+
+    const daysOld = freshnessCheck.daysOld || null;
+    let status = 'unknown';
+    let recommendation = 'Add visible last updated dates to your content';
+
+    if (daysOld !== null) {
+      if (daysOld <= 30) {
+        status = 'fresh';
+        recommendation = 'Content is within the optimal 30-day citation window';
+      } else if (daysOld <= 90) {
+        status = 'recent';
+        recommendation = 'Consider updating content to stay in the 30-day window';
+      } else if (daysOld <= 180) {
+        status = 'aging';
+        recommendation = 'Content is aging - update to improve AI citation chances';
+      } else {
+        status = 'stale';
+        recommendation = 'Content is stale - significant update recommended';
+      }
+    }
+
+    return {
+      daysSinceUpdate: daysOld,
+      status,
+      isWithin30Days: daysOld !== null && daysOld <= 30,
+      isWithin90Days: daysOld !== null && daysOld <= 90,
+      benchmark: '76.4% of top-cited pages were updated within 30 days',
+      recommendation,
+    };
+  }
+
+  /**
+   * Phase 3: Handle Query Simulation
+   */
+  async handleQuerySimulation() {
+    const query = this.querySimInput?.value?.trim();
+    if (!query || !this.currentResults) {
+      this.showError('Please enter a query and ensure analysis is complete');
+      return;
+    }
+
+    const btn = this.querySimBtn;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-loader"></span> Simulating...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('/api/llm/query-simulation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query,
+          url: this.currentResults.url,
+          pageContent: this.currentResults.pageContent || '',
+          geoScore: this.currentResults.geo?.score || 0,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Query simulation failed');
+      }
+
+      const result = await response.json();
+      this.displayQuerySimResults(result);
+    } catch (error) {
+      console.error('Query simulation error:', error);
+      this.showError('Query simulation failed. Please try again.');
+    } finally {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }
+  }
+
+  displayQuerySimResults(result) {
+    if (!this.querySimResults) return;
+
+    this.querySimResults.style.display = 'block';
+    this.querySimResults.innerHTML = `
+      <div class="query-sim-result">
+        <div class="sim-header">
+          <span class="sim-badge ${result.wouldCite ? 'cited' : 'not-cited'}">
+            ${result.wouldCite ? '✓ Would Likely Cite' : '✗ Unlikely to Cite'}
+          </span>
+          <span class="sim-confidence">Confidence: ${result.confidence || 'Medium'}</span>
+        </div>
+        <div class="sim-response">
+          <h5>Simulated AI Response:</h5>
+          <p class="sim-text">${this.escapeHtml(result.simulatedResponse || 'Unable to generate response')}</p>
+        </div>
+        ${result.reasoning ? `
+          <div class="sim-reasoning">
+            <h5>Why:</h5>
+            <p>${this.escapeHtml(result.reasoning)}</p>
+          </div>
+        ` : ''}
+        ${result.improvements ? `
+          <div class="sim-improvements">
+            <h5>To Improve Citation Chances:</h5>
+            <ul>
+              ${result.improvements.map(imp => `<li>${this.escapeHtml(imp)}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  /**
+   * Phase 3: Handle LLM Deep Analysis
+   */
+  async handleLLMAnalysis() {
+    if (!this.currentResults || this.isLLMAnalysisRunning) return;
+
+    this.isLLMAnalysisRunning = true;
+    const btn = this.runLLMAnalysisBtn;
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-loader"></span> Analyzing...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('/api/llm/deep-analysis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: this.currentResults.url,
+          pageContent: this.currentResults.pageContent || '',
+          geoResults: this.currentResults.geo,
+          seoResults: this.currentResults.seo,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Deep analysis failed');
+      }
+
+      const result = await response.json();
+      this.displayLLMInsights(result);
+    } catch (error) {
+      console.error('LLM analysis error:', error);
+      this.showError('Deep analysis failed. Please check your API configuration.');
+    } finally {
+      btn.innerHTML = originalHTML;
+      btn.disabled = false;
+      this.isLLMAnalysisRunning = false;
+    }
+  }
+
+  displayLLMInsights(result) {
+    if (!this.llmInsightsContainer) return;
+
+    const analysis = result.analysis || result;
+
+    this.llmInsightsContainer.innerHTML = `
+      <div class="llm-insights">
+        ${analysis.summary ? `
+          <div class="llm-section">
+            <h5>Summary</h5>
+            <p>${this.escapeHtml(analysis.summary)}</p>
+          </div>
+        ` : ''}
+
+        ${analysis.strengths?.length ? `
+          <div class="llm-section strengths">
+            <h5>✓ Strengths</h5>
+            <ul>
+              ${analysis.strengths.map(s => `<li>${this.escapeHtml(s)}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${analysis.weaknesses?.length ? `
+          <div class="llm-section weaknesses">
+            <h5>✗ Weaknesses</h5>
+            <ul>
+              ${analysis.weaknesses.map(w => `<li>${this.escapeHtml(w)}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${analysis.actionItems?.length ? `
+          <div class="llm-section actions">
+            <h5>→ Action Items</h5>
+            <ol>
+              ${analysis.actionItems.map(a => `<li>${this.escapeHtml(a)}</li>`).join('')}
+            </ol>
+          </div>
+        ` : ''}
+
+        ${analysis.competitorInsights ? `
+          <div class="llm-section competitor">
+            <h5>Competitor Insights</h5>
+            <p>${this.escapeHtml(analysis.competitorInsights)}</p>
+          </div>
+        ` : ''}
+      </div>
+    `;
   }
 
   animateScore(type, score, grade = null) {
@@ -764,4 +1290,59 @@ class LuminowApp {
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new LuminowApp();
+
+  // Rotating text animation for hero subtitle
+  initRotatingText();
 });
+
+/**
+ * Elegant rotating text animation for hero section
+ */
+function initRotatingText() {
+  const textElement = document.getElementById('rotatingText');
+  if (!textElement) return;
+
+  const messages = [
+    'Reach more customers',
+    'Convert more visitors',
+    'Uncover your potential'
+  ];
+
+  let currentIndex = 0;
+  const displayDuration = 2500; // How long each message stays
+  const animationDuration = 600; // Fade transition time
+
+  function rotateText() {
+    currentIndex++;
+
+    // Check if this is the final message
+    if (currentIndex >= messages.length - 1) {
+      // Final message - no fade, just update text and apply color sweep
+      textElement.textContent = messages[messages.length - 1];
+      textElement.classList.add('final');
+      return; // Stop rotating
+    }
+
+    // Fade out current text
+    textElement.classList.add('fade-out');
+
+    setTimeout(() => {
+      // Set new text and prepare fade in
+      textElement.textContent = messages[currentIndex];
+      textElement.classList.remove('fade-out');
+      textElement.classList.add('fade-in');
+
+      // Complete fade in
+      setTimeout(() => {
+        textElement.classList.remove('fade-in');
+
+        // Schedule next rotation
+        setTimeout(rotateText, displayDuration);
+      }, 50);
+
+    }, animationDuration);
+  }
+
+  // Start rotation after initial display
+  setTimeout(rotateText, displayDuration);
+}

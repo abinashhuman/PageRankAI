@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- Pink daisy petal gradient -->
+    <radialGradient id="petalGradient" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#ffb6c1"/>
+      <stop offset="100%" stop-color="#ff91a4"/>
+    </radialGradient>
+
+    <!-- Center gradient (yellow) -->
+    <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8dc"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#daa520"/>
+    </radialGradient>
+
+    <!-- Soft pink glow -->
+    <filter id="pinkGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Pink Daisy Flower - Larger for favicon visibility -->
+  <g filter="url(#pinkGlow)">
+    <!-- Outer petals (8 petals) -->
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(45 32 32)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(90 32 32)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(135 32 32)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(180 32 32)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(225 32 32)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(270 32 32)"/>
+    <ellipse cx="32" cy="12" rx="5" ry="14" fill="url(#petalGradient)" transform="rotate(315 32 32)"/>
+
+    <!-- Inner petals (slightly smaller, rotated) -->
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(22.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(67.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(112.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(157.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(202.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(247.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(292.5 32 32)"/>
+    <ellipse cx="32" cy="16" rx="3.5" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(337.5 32 32)"/>
+
+    <!-- Flower center (golden yellow) -->
+    <circle cx="32" cy="32" r="9" fill="url(#centerGradient)"/>
+
+    <!-- Center highlight -->
+    <circle cx="30" cy="30" r="2.5" fill="#fffacd" opacity="0.7"/>
+
+    <!-- Small dots on center for texture -->
+    <circle cx="34" cy="29" r="1" fill="#b8860b" opacity="0.6"/>
+    <circle cx="30" cy="34" r="1" fill="#b8860b" opacity="0.6"/>
+    <circle cx="35" cy="34" r="1" fill="#b8860b" opacity="0.6"/>
+    <circle cx="28" cy="31" r="0.8" fill="#b8860b" opacity="0.5"/>
+    <circle cx="36" cy="31" r="0.8" fill="#b8860b" opacity="0.5"/>
+  </g>
+</svg>

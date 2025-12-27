@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Pink daisy petal gradient -->
+    <radialGradient id="petalGradient" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#ffb6c1"/>
+      <stop offset="100%" stop-color="#ff91a4"/>
+    </radialGradient>
+
+    <!-- Center gradient (yellow) -->
+    <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8dc"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#daa520"/>
+    </radialGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft pink glow -->
+    <filter id="pinkGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Outer pulse rings (pulsating effect) -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#ffb6c1" stroke-width="0.8" opacity="0.3">
+    <animate attributeName="r" values="30;42;30" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50" cy="50" r="25" fill="none" stroke="#ffc0cb" stroke-width="0.6" opacity="0.4">
+    <animate attributeName="r" values="22;32;22" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+  <circle cx="50" cy="50" r="18" fill="none" stroke="#ffb6c1" stroke-width="0.5" opacity="0.3">
+    <animate attributeName="r" values="16;24;16" dur="2s" repeatCount="indefinite" begin="1s"/>
+    <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" repeatCount="indefinite" begin="1s"/>
+  </circle>
+
+  <!-- Pink Daisy Flower -->
+  <g filter="url(#pinkGlow)">
+    <!-- Outer petals (8 petals) -->
+    <g>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(45 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="0.25s"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(90 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(135 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="0.75s"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(180 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="1s"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(225 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="1.25s"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(270 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+      </ellipse>
+      <ellipse cx="50" cy="30" rx="6" ry="14" fill="url(#petalGradient)" opacity="0.95" transform="rotate(315 50 50)">
+        <animate attributeName="opacity" values="0.95;0.8;0.95" dur="2s" repeatCount="indefinite" begin="1.75s"/>
+      </ellipse>
+    </g>
+
+    <!-- Inner petals (slightly smaller, rotated) -->
+    <g>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(22.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(67.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(112.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(157.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(202.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(247.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(292.5 50 50)"/>
+      <ellipse cx="50" cy="35" rx="4" ry="10" fill="#ffd1dc" opacity="0.9" transform="rotate(337.5 50 50)"/>
+    </g>
+
+    <!-- Flower center (golden yellow) -->
+    <circle cx="50" cy="50" r="10" fill="url(#centerGradient)">
+      <animate attributeName="r" values="10;11;10" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Center highlight -->
+    <circle cx="48" cy="48" r="3" fill="#fffacd" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.5;0.7" dur="1s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Small dots on center for texture -->
+    <circle cx="52" cy="47" r="1" fill="#b8860b" opacity="0.6"/>
+    <circle cx="48" cy="52" r="1" fill="#b8860b" opacity="0.6"/>
+    <circle cx="53" cy="52" r="1" fill="#b8860b" opacity="0.6"/>
+    <circle cx="46" cy="49" r="0.8" fill="#b8860b" opacity="0.5"/>
+    <circle cx="54" cy="49" r="0.8" fill="#b8860b" opacity="0.5"/>
+  </g>
+</svg>

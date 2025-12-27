@@ -1,5 +1,5 @@
 /**
- * GEO (Generative Engine Optimization) Analyzer Module - v2.0
+ * GEO (Generative Engine Optimization) Analyzer Module - v3.0
  * Phase 4 of the LuMinoSity Algorithm
  *
  * ═══════════════════════════════════════════════════════════════════════════════
@@ -41,11 +41,17 @@
  *    - ClaudeBot (Anthropic)
  *    - Google-Extended (Gemini training)
  *
- * 5. PAGE TYPE DIFFERENTIATION
- *    Different scoring profiles for:
- *    - Product pages: Full e-commerce scoring
- *    - Article pages: Emphasize citability, authority
- *    - Category pages: Emphasize architecture, navigation
+ * 5. PAGE TYPE DIFFERENTIATION (v3.0 - Universal Support)
+ *    Supports 12+ page types with customized scoring profiles:
+ *    - E-commerce: product, category
+ *    - Content: article, news, documentation, comparison
+ *    - Business: saas, localBusiness, portfolio, landing
+ *    - Navigation: homepage, directory
+ *
+ * 6. CONTENT FRESHNESS (KDD'24)
+ *    76.4% of ChatGPT's most-cited pages updated within 30 days.
+ *    Content with 2000+ words gets 3x more citations.
+ *    Listicles account for 50% of top AI citations.
  *
  * ═══════════════════════════════════════════════════════════════════════════════
  * SCORING ARCHITECTURE
@@ -58,7 +64,7 @@
  * │ Pillar                              │ Weight │ Justification               │
  * ├─────────────────────────────────────┼────────┼─────────────────────────────┤
  * │ 1. AI Crawl Access (GATING)        │ 15%    │ No access = zero visibility │
- * │ 2. Product Metadata                 │ 12%    │ Critical for shopping AI    │
+ * │ 2. Product Metadata / Content Quality│ 12%   │ Page-type dependent         │
  * │ 3. Entity Disambiguation            │ 8%     │ Identity matching           │
  * │ 4. Information Architecture         │ 10%    │ Extraction quality          │
  * │ 5. Answerability                    │ 13%    │ Query coverage              │
@@ -81,96 +87,39 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  */
 
+import {
+  PILLAR_CONFIG,
+  SCORING_PROFILES,
+  getScoringProfile,
+  shouldUseProductMetadata,
+} from '../config/scoringProfiles.js';
+import { analyzeContentQuality, analyzeContentFreshness } from '../utils/contentAnalysis.js';
+
 export class GEOAnalyzer {
   constructor() {
     /**
-     * Pillar configuration with research-justified weights
-     * Total weights sum to 100% (1.0)
+     * Pillar configuration imported from centralized config
+     * Now supports dynamic pillar selection based on page type
      */
-    this.pillarConfig = {
-      aiCrawlAccess: {
-        name: 'AI Crawl Access & Snippet Controls',
-        weight: 0.15,
-        isGating: true, // Critical: applies multiplier if failed
-        maxPoints: 100,
-      },
-      productMetadata: {
-        name: 'Product Metadata Readiness',
-        weight: 0.12,
-        isGating: false,
-        maxPoints: 100,
-      },
-      entityDisambiguation: {
-        name: 'Entity Disambiguation & Identifiers',
-        weight: 0.08,
-        isGating: false,
-        maxPoints: 100,
-      },
-      informationArchitecture: {
-        name: 'Machine-Scannable Information Architecture',
-        weight: 0.10,
-        isGating: false,
-        maxPoints: 100,
-      },
-      answerability: {
-        name: 'Answerability & Query Coverage',
-        weight: 0.13,
-        isGating: false,
-        maxPoints: 100,
-      },
-      evidenceCitability: {
-        name: 'Evidence, Justification & Citability',
-        weight: 0.18, // Highest weight - KDD'24 research
-        isGating: false,
-        maxPoints: 100,
-      },
-      multimodalReadiness: {
-        name: 'Multimodal Readiness',
-        weight: 0.08,
-        isGating: false,
-        maxPoints: 100,
-      },
-      authoritySignals: {
-        name: 'Authority & Trust Signals',
-        weight: 0.16,
-        isGating: false,
-        maxPoints: 100,
-      },
-    };
+    this.pillarConfig = PILLAR_CONFIG;
 
     /**
-     * Scoring profiles for different page types
-     * Adjusts pillar weights based on page context
+     * Scoring profiles imported from centralized config
+     * Supports 12+ page types with customized multipliers
      */
-    this.scoringProfiles = {
-      product: {
-        productMetadata: 1.0,
-        entityDisambiguation: 1.0,
-        answerability: 1.0,
-        evidenceCitability: 1.0,
-        multimodalReadiness: 1.2, // Products need good images
-        authoritySignals: 1.0,
-      },
-      article: {
-        productMetadata: 0.3,
-        entityDisambiguation: 0.5,
-        answerability: 0.8,
-        evidenceCitability: 1.4, // Articles need strong citations
-        multimodalReadiness: 0.7,
-        authoritySignals: 1.3, // Author authority matters
-      },
-      category: {
-        productMetadata: 0.4,
-        entityDisambiguation: 0.6,
-        answerability: 0.7,
-        informationArchitecture: 1.4, // Navigation is key
-        evidenceCitability: 0.6,
-        authoritySignals: 0.8,
-      },
-      other: {
-        // Default weights (no adjustment)
-      },
-    };
+    this.scoringProfiles = SCORING_PROFILES;
+
+    /**
+     * All supported page types
+     */
+    this.supportedPageTypes = [
+      'product', 'category', // E-commerce
+      'article', 'news', 'documentation', // Content
+      'saas', 'localBusiness', 'portfolio', // Business
+      'comparison', 'directory', // Comparison & Directory
+      'landing', 'homepage', // Marketing
+      'other', // Default
+    ];
   }
 
   /**
@@ -182,27 +131,36 @@ export class GEOAnalyzer {
    */
   analyze(pageData) {
     const pageType = this.determinePageType(pageData);
-    const profile = this.scoringProfiles[pageType] || this.scoringProfiles.other;
+    const profile = getScoringProfile(pageType);
+    const useProductMetadata = shouldUseProductMetadata(pageType);
 
     // Run all pillar analyses
+    // For non-product pages, use Content Quality instead of Product Metadata
     const pillars = {
       aiCrawlAccess: this.analyzeAICrawlAccess(pageData),
-      productMetadata: this.analyzeProductMetadata(pageData, pageType),
+      // Dynamic pillar: productMetadata for e-commerce, contentQuality for others
+      ...(useProductMetadata
+        ? { productMetadata: this.analyzeProductMetadata(pageData, pageType) }
+        : { contentQuality: this.analyzeContentQualityPillar(pageData, pageType) }
+      ),
       entityDisambiguation: this.analyzeEntityDisambiguation(pageData, pageType),
       informationArchitecture: this.analyzeInformationArchitecture(pageData),
       answerability: this.analyzeAnswerability(pageData, pageType),
       evidenceCitability: this.analyzeEvidenceCitability(pageData),
       multimodalReadiness: this.analyzeMultimodalReadiness(pageData, pageType),
-      authoritySignals: this.analyzeAuthoritySignals(pageData),
+      authoritySignals: this.analyzeAuthoritySignals(pageData, pageType),
     };
 
     // Calculate score with gating and profile adjustments
-    const { score, gateMultiplier } = this.calculateWeightedScore(pillars, profile);
+    const { score, gateMultiplier } = this.calculateWeightedScore(pillars, profile, pageType);
     const normalizedScore = Math.round((score / 1000) * 800); // Normalize to 0-800
 
     const issues = this.collectIssues(pillars);
-    const recommendations = this.generateRecommendations(pillars, gateMultiplier);
+    const recommendations = this.generateRecommendations(pillars, gateMultiplier, pageType);
     const band = this.getScoreBand(normalizedScore);
+
+    // Enhanced content analysis for visualization features
+    const contentAnalysis = this.getContentAnalysis(pageData, pageType);
 
     return {
       score: normalizedScore,
@@ -210,24 +168,106 @@ export class GEOAnalyzer {
       rawScore: Math.round(score),
       gateMultiplier,
       pageType,
+      pageTypeName: profile.description || pageType,
+      useProductMetadata,
       band,
       pillars,
       issues,
       recommendations,
-      summary: this.generateSummary(normalizedScore, band, issues, gateMultiplier),
+      summary: this.generateSummary(normalizedScore, band, issues, gateMultiplier, pageType),
       checks: this.transformToChecks(pillars),
+      contentAnalysis, // New: detailed content analysis for visualizations
     };
   }
 
   /**
    * Determine page type for scoring profile selection
-   * Uses confidence-weighted signals
+   * Supports 12+ page types with confidence-weighted signals
+   *
+   * @param {Object} pageData - Scraped page data
+   * @returns {string} Detected page type
    */
   determinePageType(pageData) {
+    // Use new enhanced page type detection if available
+    const detectedType = pageData.pageType?.type;
+
+    // Validate against supported types
+    if (detectedType && this.supportedPageTypes.includes(detectedType)) {
+      return detectedType;
+    }
+
+    // Legacy fallback for backwards compatibility
     if (pageData.pageType?.isProductPage) return 'product';
-    if (pageData.pageType?.type === 'article') return 'article';
-    if (pageData.pageType?.type === 'category') return 'category';
+    if (pageData.pageType?.isEcommerce) return pageData.pageType?.type || 'product';
+    if (pageData.pageType?.isContent) return pageData.pageType?.type || 'article';
+    if (pageData.pageType?.isBusiness) return pageData.pageType?.type || 'saas';
+
     return 'other';
+  }
+
+  /**
+   * Analyze Content Quality pillar (for non-product pages)
+   * Replaces productMetadata for content-focused pages
+   *
+   * Based on KDD'24 research:
+   * - 2000+ words get 3x more citations
+   * - Listicles account for 50% of top AI citations
+   * - Tables increase citation rates 2.5x
+   * - 76.4% of cited pages updated within 30 days
+   *
+   * @param {Object} pageData - Scraped page data
+   * @param {string} pageType - Detected page type
+   * @returns {Object} Content quality analysis result
+   */
+  analyzeContentQualityPillar(pageData, pageType) {
+    // Use the centralized content quality analyzer
+    const analysis = analyzeContentQuality(pageData, pageType);
+
+    return {
+      score: analysis.score,
+      maxScore: analysis.maxScore,
+      percentage: analysis.percentage,
+      passed: analysis.passed,
+      checks: analysis.checks,
+      issues: analysis.issues.map(issue => ({
+        severity: 'warning',
+        message: issue,
+        impact: 10,
+      })),
+      recommendations: analysis.recommendations,
+      pillarName: analysis.pillarName,
+      details: analysis.details,
+    };
+  }
+
+  /**
+   * Get detailed content analysis for visualization features
+   * Powers "What AI Sees" and citation likelihood displays
+   *
+   * @param {Object} pageData - Scraped page data
+   * @param {string} pageType - Detected page type
+   * @returns {Object} Detailed content analysis
+   */
+  getContentAnalysis(pageData, pageType) {
+    const textContent = pageData.textContent || '';
+
+    // Get freshness analysis
+    const freshness = analyzeContentFreshness(pageData, textContent);
+
+    // Get full content quality analysis for details
+    const contentQuality = analyzeContentQuality(pageData, pageType);
+
+    return {
+      freshness,
+      depth: contentQuality.details?.depth,
+      listicle: contentQuality.details?.listicle,
+      tables: contentQuality.details?.tables,
+      research: contentQuality.details?.research,
+      eeat: contentQuality.details?.eeat,
+      quotableSentences: contentQuality.details?.quotableSentences || [],
+      uncitableContent: contentQuality.details?.uncitableContent || [],
+      wordCount: pageData.wordCount || 0,
+    };
   }
 
   /**
@@ -727,7 +767,7 @@ export class GEOAnalyzer {
     const recommendations = [];
     const checks = {};
 
-    // For non-product pages, check general entity clarity
+    // For non-product pages, check general entity clarity          
     if (pageType !== 'product') {
       return this.analyzeGeneralEntityClarity(pageData);
     }
@@ -1856,17 +1896,37 @@ export class GEOAnalyzer {
    * This reflects reality: blocked pages get zero AI visibility regardless
    * of how good their content is.
    */
-  calculateWeightedScore(pillars, profile) {
+  calculateWeightedScore(pillars, profile, pageType = 'other') {
     let weightedSum = 0;
     let totalWeight = 0;
 
+    // Map contentQuality pillar to use contentQuality config when applicable
+    const pillarConfigMap = {
+      contentQuality: this.pillarConfig.contentQuality || this.pillarConfig.productMetadata,
+    };
+
     // Calculate base weighted score
     for (const [pillarName, pillar] of Object.entries(pillars)) {
-      const config = this.pillarConfig[pillarName];
+      // Get config - handle contentQuality as alternative to productMetadata
+      let config = this.pillarConfig[pillarName];
+      if (!config && pillarConfigMap[pillarName]) {
+        config = pillarConfigMap[pillarName];
+      }
       if (!config) continue;
 
       // Apply profile multiplier if exists
-      const profileMultiplier = profile[pillarName] || 1.0;
+      // Support both old format (profile[pillarName]) and new format (profile.multipliers[pillarName])
+      let profileMultiplier = 1.0;
+      if (profile.multipliers && profile.multipliers[pillarName] !== undefined) {
+        profileMultiplier = profile.multipliers[pillarName];
+      } else if (profile.multipliers && pillarName === 'contentQuality') {
+        // contentQuality uses productMetadata multiplier when not specified
+        profileMultiplier = profile.multipliers.contentQuality || profile.multipliers.productMetadata || 1.0;
+      } else if (profile[pillarName] !== undefined) {
+        // Legacy format support
+        profileMultiplier = profile[pillarName];
+      }
+
       const adjustedWeight = config.weight * profileMultiplier;
 
       const normalizedScore = pillar.score / config.maxPoints;
@@ -1994,8 +2054,11 @@ export class GEOAnalyzer {
 
   /**
    * Generate prioritized recommendations with gating context
+   * @param {Object} pillars - Analyzed pillars
+   * @param {number} gateMultiplier - Gating multiplier from crawl access
+   * @param {string} pageType - Detected page type for context-aware recommendations
    */
-  generateRecommendations(pillars, gateMultiplier) {
+  generateRecommendations(pillars, gateMultiplier, pageType = 'other') {
     const allRecs = [];
 
     // If gated, add priority recommendation
@@ -2056,21 +2119,44 @@ export class GEOAnalyzer {
   }
 
   /**
-   * Generate summary with context about gating
+   * Generate summary with context about gating and page type
+   * @param {number} score - Normalized score (0-800)
+   * @param {Object} band - Score band object
+   * @param {Array} issues - List of issues
+   * @param {number} gateMultiplier - Gating multiplier
+   * @param {string} pageType - Detected page type
    */
-  generateSummary(score, band, issues, gateMultiplier) {
+  generateSummary(score, band, issues, gateMultiplier, pageType = 'other') {
     const criticalCount = issues.filter(i => i.severity === 'critical').length;
     const warningCount = issues.filter(i => i.severity === 'warning').length;
+
+    // Page type display names
+    const pageTypeNames = {
+      product: 'Product Page',
+      category: 'Category Page',
+      article: 'Article',
+      news: 'News Article',
+      documentation: 'Documentation',
+      saas: 'SaaS Landing Page',
+      localBusiness: 'Local Business Page',
+      portfolio: 'Portfolio Page',
+      comparison: 'Comparison Page',
+      directory: 'Directory Page',
+      landing: 'Landing Page',
+      homepage: 'Homepage',
+      other: 'Web Page',
+    };
+    const pageTypeName = pageTypeNames[pageType] || 'Web Page';
 
     let message;
     if (gateMultiplier < 0.5) {
       message = `CRITICAL: AI crawlers are blocked. Score is heavily penalized (${Math.round(gateMultiplier * 100)}% multiplier). Fix access issues first.`;
     } else if (score >= 700) {
-      message = 'Excellent! Content is highly optimized for AI citation by ChatGPT, Perplexity, and other AI search engines.';
+      message = `Excellent! This ${pageTypeName.toLowerCase()} is highly optimized for AI citation by ChatGPT, Perplexity, and other AI search engines.`;
     } else if (score >= 550) {
-      message = 'Very good GEO optimization. Content is well-positioned to be cited by AI systems.';
+      message = `Very good GEO optimization for this ${pageTypeName.toLowerCase()}. Content is well-positioned to be cited by AI systems.`;
     } else if (score >= 400) {
-      message = `Good foundation. Address ${criticalCount} critical issues to improve AI citation likelihood.`;
+      message = `Good foundation for this ${pageTypeName.toLowerCase()}. Address ${criticalCount} critical issues to improve AI citation likelihood.`;
     } else if (score >= 200) {
       message = `Fair GEO readiness. ${criticalCount} critical and ${warningCount} warning issues need attention.`;
     } else {
@@ -2084,6 +2170,8 @@ export class GEOAnalyzer {
       bandColor: band.color,
       description: band.description,
       gateMultiplier,
+      pageType,
+      pageTypeName,
       criticalIssues: criticalCount,
       warnings: warningCount,
       message,
