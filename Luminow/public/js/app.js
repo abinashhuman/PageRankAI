@@ -80,6 +80,16 @@ class LuminowApp {
   bindEvents() {
     this.form.addEventListener('submit', (e) => this.handleAnalyze(e));
 
+    // Custom validation tooltip for URL input
+    this.urlInput.addEventListener('invalid', (e) => {
+      e.preventDefault();
+      this.showCustomTooltip();
+    });
+
+    this.urlInput.addEventListener('input', () => {
+      this.hideCustomTooltip();
+    });
+
     // Tab navigation
     this.tabs.forEach(tab => {
       tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
@@ -205,6 +215,38 @@ class LuminowApp {
     setTimeout(() => {
       container.remove();
     }, 1200);
+  }
+
+  showCustomTooltip() {
+    // Remove existing tooltip if any
+    this.hideCustomTooltip();
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'custom-validation-tooltip';
+    tooltip.innerHTML = `
+      <span class="tooltip-emoji">🤔</span>
+      <span class="tooltip-message">I'm smart but can't yet read your mind... please share your URL</span>
+    `;
+
+    // Position tooltip below input
+    const inputRect = this.urlInput.getBoundingClientRect();
+    tooltip.style.position = 'fixed';
+    tooltip.style.left = `${inputRect.left + inputRect.width / 2}px`;
+    tooltip.style.top = `${inputRect.bottom + 10}px`;
+    tooltip.style.transform = 'translateX(-50%)';
+
+    document.body.appendChild(tooltip);
+    this.customTooltip = tooltip;
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => this.hideCustomTooltip(), 4000);
+  }
+
+  hideCustomTooltip() {
+    if (this.customTooltip) {
+      this.customTooltip.remove();
+      this.customTooltip = null;
+    }
   }
 
   async handleAnalyze(e) {
@@ -1248,4 +1290,59 @@ class LuminowApp {
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new LuminowApp();
+
+  // Rotating text animation for hero subtitle
+  initRotatingText();
 });
+
+/**
+ * Elegant rotating text animation for hero section
+ */
+function initRotatingText() {
+  const textElement = document.getElementById('rotatingText');
+  if (!textElement) return;
+
+  const messages = [
+    'Reach more customers',
+    'Convert more visitors',
+    'Uncover your potential'
+  ];
+
+  let currentIndex = 0;
+  const displayDuration = 2500; // How long each message stays
+  const animationDuration = 600; // Fade transition time
+
+  function rotateText() {
+    currentIndex++;
+
+    // Check if this is the final message
+    if (currentIndex >= messages.length - 1) {
+      // Final message - no fade, just update text and apply color sweep
+      textElement.textContent = messages[messages.length - 1];
+      textElement.classList.add('final');
+      return; // Stop rotating
+    }
+
+    // Fade out current text
+    textElement.classList.add('fade-out');
+
+    setTimeout(() => {
+      // Set new text and prepare fade in
+      textElement.textContent = messages[currentIndex];
+      textElement.classList.remove('fade-out');
+      textElement.classList.add('fade-in');
+
+      // Complete fade in
+      setTimeout(() => {
+        textElement.classList.remove('fade-in');
+
+        // Schedule next rotation
+        setTimeout(rotateText, displayDuration);
+      }, 50);
+
+    }, animationDuration);
+  }
+
+  // Start rotation after initial display
+  setTimeout(rotateText, displayDuration);
+}

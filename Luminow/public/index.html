@@ -30,7 +30,7 @@
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -57,7 +57,9 @@
     <section class="hero">
       <div class="hero-content">
         <h1>Show up on AI chats</h1>
-        <p class="hero-subtitle">Uncover your potential</p>
+        <p class="hero-subtitle">
+          <span class="rotating-text" id="rotatingText">Reach more customers</span>
+        </p>
 
         <!-- URL Input Form - Copilot Style -->
         <form id="analyzeForm" class="analyze-form">
@@ -96,12 +98,13 @@
                         <span class="mode-option-check" id="checkMagic"></span>
                         <span>Magic</span>
                         <svg class="magic-ai-icon" viewBox="0 0 24 24" fill="none">
-                          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#goldGradient)" stroke="#c9a96e" stroke-width="1"/>
+                          <path d="M12 2C12 2 13.5 8.5 14.5 9.5C15.5 10.5 22 12 22 12C22 12 15.5 13.5 14.5 14.5C13.5 15.5 12 22 12 22C12 22 10.5 15.5 9.5 14.5C8.5 13.5 2 12 2 12C2 12 8.5 10.5 9.5 9.5C10.5 8.5 12 2 12 2Z" fill="url(#geminiGradient)"/>
                           <defs>
-                            <linearGradient id="goldGradient" x1="2" y1="2" x2="22" y2="22">
-                              <stop offset="0%" stop-color="#f0d78c"/>
-                              <stop offset="50%" stop-color="#c9a96e"/>
-                              <stop offset="100%" stop-color="#a67c52"/>
+                            <linearGradient id="geminiGradient" x1="2" y1="2" x2="22" y2="22">
+                              <stop offset="0%" stop-color="#4285f4"/>
+                              <stop offset="35%" stop-color="#9b72cb"/>
+                              <stop offset="70%" stop-color="#d96570"/>
+                              <stop offset="100%" stop-color="#f59e0b"/>
                             </linearGradient>
                           </defs>
                         </svg>
